@@ -1,0 +1,15 @@
+{
+  "properties": [
+    {
+      "name": "bobo.redisson.host",
+      "type": "java.lang.String",
+      "description": "Redis的服务器地址",
+      "defaultValue": "localhost"
+    },{
+      "name": "bobo.redisson.port",
+      "type": "java.lang.Integer",
+      "description": "Redis的服务器端口",
+      "defaultValue": 6379
+    }
+  ]
+}
