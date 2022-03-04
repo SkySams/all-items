@@ -9,4 +9,8 @@ public class App {
 
         System.out.println("Nice");
     }
+
+    public static void play(){
+        System.out.println();
+    }
 }
