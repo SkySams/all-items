@@ -23,6 +23,7 @@ public class RedisController {
 
     @GetMapping("/query")
     public String query() {
+
         RBucket<Object> bucket = redissonClient.getBucket("REDIS:NAME");
         if(bucket.get() == null){
             bucket.set("BOBO");
