@@ -2,6 +2,9 @@ package org.example.thread;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.*;
 
 /**
@@ -58,6 +61,20 @@ public class CreateThreadModeTest {
         scheduledExecutorService.scheduleAtFixedRate(new OneCreateThreadMode(),1,2,TimeUnit.SECONDS);
         Thread.sleep(5000);
 
+    }
+
+    @Test
+    public void createThreadPoolTwoMode() throws ExecutionException, InterruptedException {
+        FourCreateThreadMode fourCreateThreadMode = new FourCreateThreadMode();
+        ExecutorService executorService = fourCreateThreadMode.getExecotorService();
+        Collection<ThreeCreateThreadMode> collection = new ArrayList<>();
+        collection.add(new ThreeCreateThreadMode());
+        collection.add(new ThreeCreateThreadMode());
+        collection.add(new ThreeCreateThreadMode());
+        collection.add(new ThreeCreateThreadMode());
+        collection.add(new ThreeCreateThreadMode());
+        collection.add(new ThreeCreateThreadMode());
+        executorService.invokeAny(collection);
     }
 
 }
