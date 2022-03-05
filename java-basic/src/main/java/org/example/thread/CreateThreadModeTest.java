@@ -45,6 +45,21 @@ public class CreateThreadModeTest {
         executorService.shutdown();
     }
 
+    @Test
+    public void createThreadPoolOneMode() throws InterruptedException {
+        FourCreateThreadMode fourCreateThreadMode = new FourCreateThreadMode();
+        /**
+         * 线程池大小为 10
+         */
+        ScheduledExecutorService scheduledExecutorService = fourCreateThreadMode.newScheduledThreadPool(10);
+        // 延迟2秒执行
+//        scheduledExecutorService.schedule(new OneCreateThreadMode(), 2, TimeUnit.SECONDS);
+        // 延迟1秒执行， 每2秒执行一次
+        scheduledExecutorService.scheduleAtFixedRate(new OneCreateThreadMode(),1,2,TimeUnit.SECONDS);
+        Thread.sleep(5000);
+
+    }
+
 }
 
 /**
