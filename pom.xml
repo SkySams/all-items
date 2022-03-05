@@ -11,6 +11,7 @@
     <modules>
         <module>redisson</module>
         <module>starter</module>
+        <module>java-basic</module>
     </modules>
 
     <properties>
