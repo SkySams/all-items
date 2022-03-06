@@ -1,4 +1,4 @@
-package org.example.aop.shoping.org.example.aop;
+package org.example.aop;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

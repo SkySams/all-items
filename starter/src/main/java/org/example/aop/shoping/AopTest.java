@@ -1,6 +1,6 @@
 package org.example.aop.shoping;
 
-import org.example.aop.shoping.org.example.aop.AppConfig;
+import org.example.aop.AppConfig;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
