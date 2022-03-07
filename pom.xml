@@ -12,6 +12,7 @@
         <module>redisson</module>
         <module>starter</module>
         <module>java-basic</module>
+        <module>elasticsearch</module>
     </modules>
 
     <properties>
