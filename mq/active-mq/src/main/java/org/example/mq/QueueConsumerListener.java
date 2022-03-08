@@ -4,8 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.*;
 
 /**
  * @author: zyh
@@ -15,6 +14,8 @@ import java.util.concurrent.ScheduledExecutorService;
 @Component
 public class QueueConsumerListener {
 
+    private ExecutorService threadPool= new ThreadPoolExecutor(6, Integer.MAX_VALUE,
+            60L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
     /**
      * queue模式 消费者
@@ -22,7 +23,13 @@ public class QueueConsumerListener {
      */
     @JmsListener(destination="${spring.activemq.queue-name}", containerFactory="queueListener")
     public void readActiveQueue(String message) {
-        log.info("queue接受到: {}", message);
+        threadPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                log.info(Thread.currentThread().getName()+" queue接受到: {}", message);
+            }
+        });
+
     }
 
 }
