@@ -25,7 +25,7 @@ public class ProducerController {
     @GetMapping("/queue/test")
     public String sendQueue(String str) {
         for (int i =0;i<10000; i++){
-            jmsMessagingService.sendMessage(this.queue, str+i);
+            jmsMessagingService.sendMessage(this.queue, str+i,10000);
         }
         return "success";
     }

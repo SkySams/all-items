@@ -33,6 +33,7 @@ public class JmsMessagingServiceImpl implements JmsMessagingService {
      */
     @Override
     public void sendMessage(Destination destination, String message) {
+        log.info("发送信息：{}",message);
         jmsMessagingTemplate.convertAndSend(destination, message);
     }
 
@@ -46,7 +47,7 @@ public class JmsMessagingServiceImpl implements JmsMessagingService {
     public void sendMessage(Destination destination, String message, long time) {
         log.info("延迟发送信息：{}",message);
         Map<String, Object> map = new HashMap<>();
-        map.put(ScheduledMessage.AMQ_SCHEDULED_DELAY, time);
+        map.put(ScheduledMessage.AMQ_SCHEDULER_MANAGEMENT_DESTINATION, time);
         jmsMessagingTemplate.convertAndSend(destination, message, map);
     }
 
