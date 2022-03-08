@@ -1,0 +1,27 @@
+server:
+  port: 8088
+spring:
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+    close-timeout: 15s # 考虑结束之前等待时间
+    in-memory: true # 默认代理URL是否应该在内存中。如果指定了显式代理，则忽略此值。
+    non-blocking-redelivery: false # 是否在回滚回滚消息之前停止消息传递。这意味着当启用此命令时，消息顺序不会被保留。
+    send-timeout: 0 # 等待消息发送响应的时间。设置为0等待永远。
+    queue-name: active.queue
+    topic-name: active.topic.name.model
+
+    pool:
+      enabled: true
+      max-connections: 10
+      idle-timeout: 30000 # 空闲的连接过期时间，默认为30秒
+
+
+
+  task:
+    execution:
+      pool:
+        core-size: 16  # 线程池有16条线程
+        queue-capacity: 100
+        keep-alive: 10s  # 空闲10秒就会被回收
