@@ -23,7 +23,9 @@ public class TopicController {
 
     @GetMapping("/topic/test")
     public String sendTopic( String str) {
-        jmsMessagingService.sendMessage(this.topic, str);
+        for(int i=0;i<=1000; i++){
+            jmsMessagingService.sendMessage(this.topic, str+i);
+        }
         return "success";
     }
 

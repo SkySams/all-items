@@ -15,4 +15,13 @@ public interface JmsMessagingService {
      */
     void sendMessage(Destination destination, final String message);
 
+    /**
+     * 定时发送
+     *
+     * @param destination
+     * @param message
+     * @param timing
+     */
+    void sendMessage(Destination destination, final String message, long timing);
+
 }

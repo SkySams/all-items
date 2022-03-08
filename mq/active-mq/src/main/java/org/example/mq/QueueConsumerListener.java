@@ -4,6 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+
 /**
  * @author: zyh
  * @date: 2022/3/8
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class QueueConsumerListener {
+
 
     /**
      * queue模式 消费者
