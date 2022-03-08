@@ -64,6 +64,13 @@ public class ActiveConfig {
         return new ActiveMQConnectionFactory(username,password, brokerUrl);
     }
 
+    @Bean
+    public JmsTemplate jmsQueueTemplate() {
+        JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory());
+        jmsTemplate.setPubSubDomain(false);
+        return jmsTemplate;
+    }
+
     /**
      * 在Queue模式中，对消息的监听需要对containerFactory进行配置
      *
