@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -82,10 +83,25 @@ public class EmployeeController {
      * 查询所有
      * @return
      */
-    @RequestMapping("/findAll")
-    public Iterable<Employee> findAll(){
+    @RequestMapping("/findAll/1")
+    public Iterable<Employee> findAll2(){
         Iterable<Employee> iterable = employeeRepository.findAll();
         return iterable;
+    }
+
+
+    /**
+     * 查询所有
+     * @return
+     */
+    @RequestMapping("/findAll")
+    public List<Employee> findAll(){
+        Iterable<Employee> iterable = employeeRepository.findAll();
+        List<Employee> list = new ArrayList<>();
+        for (Employee employee : iterable){
+            list.add(employee);
+        }
+        return list;
     }
 
     /** 分页*/

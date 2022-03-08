@@ -13,6 +13,7 @@
         <module>starter</module>
         <module>java-basic</module>
         <module>elasticsearch</module>
+        <module>mq</module>
     </modules>
 
     <properties>
