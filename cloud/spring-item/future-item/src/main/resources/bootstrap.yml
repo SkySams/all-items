@@ -1,19 +1,20 @@
 spring:
   application:
-    name: nacos-config
+    name: nacos
   profiles:
     active: test
   cloud:
     nacos:
-      config:
-        namespace: 9af0b16f-20ca-42d6-bd48-4e4e9cb91bc0
-        server-addr: ${spring.cloud.nacos.discovery.server-addr}
-        group: DEFAULT_GROUP
-        file-extension: yaml
-        username: nacos
-        password: nacos
       discovery:
-        namespace: 9af0b16f-20ca-42d6-bd48-4e4e9cb91bc0
+        namespace:
         server-addr: 127.0.0.1:8848
         username: nacos
         password: nacos
+      config:
+        namespace:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        group: DEFAULT_GROUP
+        file-extension: properties
+        name: ${spring.application.name}
+        username: ${spring.cloud.nacos.discovery.username}
+        password: ${spring.cloud.nacos.discovery.password}

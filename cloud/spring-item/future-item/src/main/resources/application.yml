@@ -2,6 +2,6 @@ server:
   port: 8070
 
 
-logging:
-  level:
-    root: debug
+#logging:
+#  level:
+#    root: debug
