@@ -1,8 +1,6 @@
 spring:
   application:
     name: nacos
-  profiles:
-    active: test
   cloud:
     nacos:
       discovery:
