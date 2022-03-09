@@ -16,3 +16,4 @@ spring:
         name: ${spring.application.name}
         username: ${spring.cloud.nacos.discovery.username}
         password: ${spring.cloud.nacos.discovery.password}
+        timeout: 3000

@@ -14,7 +14,12 @@
     <name>future-item</name>
     <description>future-item</description>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>
