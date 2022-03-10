@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: order
+  cloud:
+    nacos:
+      discovery:
+        namespace:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+      config:
+        namespace:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        group: DEFAULT_GROUP
+        file-extension: properties
+        name: ${spring.application.name}
+        username: ${spring.cloud.nacos.discovery.username}
+        password: ${spring.cloud.nacos.discovery.password}
+        timeout: 3000
+dubbo:
+  application:
+    name: order
+  protocol:
+    name: dubbo
+    port: 20880
+  provider:
+    version: 1.0.1
+
+
+
