@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ShoppingOrderController {
 
-    @DubboReference
+    @DubboReference(loadbalance = "roundrobin",timeout = 10000)
     ShoppingOrderService shoppingOrderService;
 
     @GetMapping("order")

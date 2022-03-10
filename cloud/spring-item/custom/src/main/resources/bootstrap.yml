@@ -29,6 +29,7 @@ dubbo:
     check: false
     version: 1.0.1
 
+
 logging:
   level:
     root: debug
