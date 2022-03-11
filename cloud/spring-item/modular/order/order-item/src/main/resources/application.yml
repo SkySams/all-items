@@ -4,6 +4,11 @@ server:
 spring:
   datasource:
     dynamic:
+      druid:
+        filters: stat
+        initial-size: 5
+        min-idle: 5
+        max-active: 200
       primary: master
       datasource:
         master:
@@ -12,3 +17,8 @@ spring:
           password: 123456
           type: com.alibaba.druid.pool.DruidDataSource
           driverClassName: com.mysql.cj.jdbc.Driver
+          initialSize: 5
+          minIdle: 5
+          maxActive: 200
+          time-between-eviction-runs-millis: 60000
+          min-evictable-idle-time-millis: 30000
