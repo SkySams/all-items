@@ -5,7 +5,7 @@ spring:
     nacos:
       discovery:
         namespace:
-        server-addr: 127.0.0.1:8848
+        server-addr: 127.0.0.1:8848,192.168.0.121:8848
         username: nacos
         password: nacos
 #      config:
@@ -22,9 +22,16 @@ dubbo:
     name: custom
   cloud:
     subscribed-services: order
+  registry:
+    address: spring-cloud://127.0.0.1
   protocol:
     name: dubbo
-    port: 20881
+    port: -1
+    dispatcher: all
+    threadpool: eager
+    threadname: threadname
+    threads: 100
+
   consumer:
     check: false
     version: 1.0.1

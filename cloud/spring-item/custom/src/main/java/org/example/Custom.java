@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author: zyh
  * @date: 2022/3/9
  */
-@EnableDubbo(scanBasePackages = "com.example")
+@EnableDubbo(scanBasePackages = "org.example")
 @SpringBootApplication
 public class Custom {
 
