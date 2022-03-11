@@ -1,2 +1,14 @@
 server:
   port: 9000
+
+spring:
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          url: jdbc:mysql://127.0.0.1:3306/mall_sms?useSSL=false&serverTimezone=Hongkong&useUnicode=true
+          username: root
+          password: 123456
+          type: com.alibaba.druid.pool.DruidDataSource
+          driverClassName: com.mysql.cj.jdbc.Driver

@@ -1,7 +1,9 @@
 package com.example.order.service.impl;
 
+import com.example.order.service.SmsService;
 import com.example.service.ShoppingOrderService;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
@@ -21,8 +23,12 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
     @Value("${server.port}")
     private int port;
 
+    @Autowired
+    private SmsService service;
+
     @Override
     public String add() {
+        service.selectAll();
         return "nice"+port;
     }
 }

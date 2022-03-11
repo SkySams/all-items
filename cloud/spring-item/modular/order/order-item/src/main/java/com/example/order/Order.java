@@ -9,7 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date: 2022/3/10
  */
 @EnableDubbo(scanBasePackages = "com.example")
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+        com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure.class
+})
 public class Order {
 
     public static void main(String[] args) {
