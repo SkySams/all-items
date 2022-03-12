@@ -1,11 +1,11 @@
 spring:
   application:
-    name: custom
+    name: stock
   cloud:
     nacos:
       discovery:
         namespace:
-        server-addr: 127.0.0.1:8848,192.168.0.121:8848
+        server-addr: 127.0.0.1:8848
         username: nacos
         password: nacos
 #      config:
@@ -20,18 +20,16 @@ spring:
 dubbo:
   application:
     name: ${spring.application.name}
-  cloud:
-    subscribed-services: order,stock    # 订阅应用列表, 默认为 * 订阅所有应用
   registry:
     address: spring-cloud://127.0.0.1
   protocol:
     name: dubbo
     port: -1
-  consumer:
+  provider:
     check: false
     version: 1.0.1
 
 
 logging:
   level:
-    root: debug
+    root: info
