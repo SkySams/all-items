@@ -2,6 +2,8 @@ spring:
   application:
     name: order
   cloud:
+    seata:
+      tx-service-group: default
     nacos:
       discovery:
         namespace:
@@ -30,4 +32,9 @@ dubbo:
     version: 1.0.1
 
 
+
+
+logging:
+  level:
+    root: info
 

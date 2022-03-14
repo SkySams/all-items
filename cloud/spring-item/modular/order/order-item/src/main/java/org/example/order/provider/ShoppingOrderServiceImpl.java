@@ -1,10 +1,15 @@
-package org.example.order.service.impl;
+package org.example.order.provider;
 
+import org.example.order.entity.SmsAdvert;
+import org.example.order.service.SmsAdvertService;
 import org.example.order.service.SmsService;
 import org.example.service.ShoppingOrderService;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 
 /**
  *
@@ -26,9 +31,30 @@ public class ShoppingOrderServiceImpl implements ShoppingOrderService {
     @Autowired
     private SmsService service;
 
+    @Autowired
+    private SmsAdvertService smsAdvertService;
+
     @Override
     public String add() {
         service.selectAll();
         return "nice"+port;
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void createOrder() {
+        SmsAdvert smsAdvert = new SmsAdvert();
+        Date date = new Date();
+        smsAdvert.setGmtCreate(date);
+        smsAdvert.setBeginTime(date);
+        smsAdvert.setEndTime(date);
+        smsAdvert.setPicUrl("url");
+        smsAdvert.setRemark("remark");
+        smsAdvert.setSort(1);
+        smsAdvert.setStatus(1);
+        smsAdvert.setTitle("title");
+        smsAdvertService.save(smsAdvert);
+    }
+
+
 }

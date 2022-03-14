@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.example.service.ShoppingOrderService;
 import org.example.service.StockSevice;
@@ -27,6 +28,17 @@ public class ShoppingOrderController {
     @GetMapping("stock")
     public String stock (){
         return stockSevice.stock();
+    }
+
+    @GetMapping("create")
+    @GlobalTransactional(rollbackFor = Exception.class)
+
+    public String createOrder(){
+        // 创建订单
+        shoppingOrderService.createOrder();
+        //减库存
+        stockSevice.reduceStock();
+        return "success";
     }
 
 }

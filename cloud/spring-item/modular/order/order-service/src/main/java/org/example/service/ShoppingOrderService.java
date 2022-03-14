@@ -7,4 +7,6 @@ package org.example.service;
 public interface ShoppingOrderService {
 
     String add();
+
+    public void createOrder();
 }
