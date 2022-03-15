@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("org.example.order.dao")
 @EnableDubbo(scanBasePackages = "org.example")
 @SpringBootApplication(exclude = {
-        com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure.class
+//        com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure.class
 })
 public class Order {
 
