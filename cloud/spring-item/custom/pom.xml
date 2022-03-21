@@ -30,12 +30,6 @@
         </dependency>
 
         <dependency>
-            <artifactId>order-service</artifactId>
-            <groupId>org.example</groupId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
         </dependency>
@@ -44,13 +38,14 @@
             <artifactId>seata-spring-boot-starter</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.nacos</groupId>-->
-<!--            <artifactId>nacos-client</artifactId>-->
-<!--        </dependency>-->
-
         <dependency>
             <artifactId>stock-service</artifactId>
+            <groupId>org.example</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>order-service</artifactId>
             <groupId>org.example</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
