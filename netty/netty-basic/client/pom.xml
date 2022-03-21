@@ -11,6 +11,7 @@
 
     <artifactId>client</artifactId>
 
+    <!-- 在pom层 mvn exec:java 运行 -->
     <build>
         <finalName>echo-client</finalName>
         <plugins>
