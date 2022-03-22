@@ -7,31 +7,33 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import org.example.entity.Peple;
 import org.example.handler.EchoServerHandler;
+import org.example.handler.ObjectServerHandler;
 
 import java.net.InetSocketAddress;
 
 /**
  * @author: zyh
- * @date: 2022/3/21
+ * @date: 2022/3/22
  */
-public class EchoServerTwo {
+public class ObjectNioServer {
 
     private final int port;
 
-    public EchoServerTwo(int port) {
+    public ObjectNioServer(int port) {
         this.port = port;
     }
 
     public static void main(String[] args)
             throws Exception {
-
         int port = Integer.parseInt("5612");
-        new EchoServerTwo(port).start();
+        new ObjectNioServer(port).start();
     }
 
+
     public void start() throws Exception {
-        final EchoServerHandler serverHandler = new EchoServerHandler();
+        final ObjectServerHandler serverHandler = new ObjectServerHandler();
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();

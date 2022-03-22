@@ -14,6 +14,8 @@
     <modules>
         <module>server</module>
         <module>client</module>
+        <module>rpc</module>
+        <module>component</module>
     </modules>
 
     <properties>
@@ -27,10 +29,6 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>nia</groupId>-->
-<!--            <artifactId>utils</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

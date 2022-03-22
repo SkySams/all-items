@@ -13,6 +13,16 @@
     <description>
         https://github.com/normanmaurer/netty-in-action 案例
     </description>
+
+    <dependencies>
+        <dependency>
+            <artifactId>component</artifactId>
+            <groupId>org.example</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+
     <!-- 在pom层 mvn exec:java 运行 -->
     <build>
         <finalName>Echo-Server</finalName>
