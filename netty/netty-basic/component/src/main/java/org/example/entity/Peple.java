@@ -1,5 +1,7 @@
 package org.example.entity;
 
+import io.netty.channel.Channel;
+
 import java.io.Serializable;
 
 /**

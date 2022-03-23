@@ -1,17 +1,20 @@
 package org.example.server;
 
+import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.EventLoopGroup;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
 import org.example.entity.Peple;
 import org.example.handler.EchoServerHandler;
 import org.example.handler.ObjectServerHandler;
 
 import java.net.InetSocketAddress;
+import java.nio.charset.Charset;
 
 /**
  * @author: zyh
@@ -33,25 +36,17 @@ public class ObjectNioServer {
 
 
     public void start() throws Exception {
-        final ObjectServerHandler serverHandler = new ObjectServerHandler();
         EventLoopGroup group = new NioEventLoopGroup();
         try {
-            ServerBootstrap b = new ServerBootstrap();
-            b.group(group)
+            ServerBootstrap bootstrap = new ServerBootstrap();
+            bootstrap.group(group)
                     .channel(NioServerSocketChannel.class)
                     .localAddress(new InetSocketAddress(port))
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        public void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(serverHandler);
-                        }
-                    });
-
-            ChannelFuture f = b.bind().sync();
-            System.out.println(EchoServer.class.getName() +
-                    " started and listening for connections on " + f.channel().localAddress());
-            f.channel().closeFuture().sync();
-        } finally {
+                    .childHandler(new ObjectServerHandler());
+            ChannelFuture channelFuture = bootstrap.bind().sync();
+            System.out.println(channelFuture.channel().localAddress());
+            channelFuture.channel().closeFuture().sync();
+        }finally {
             group.shutdownGracefully().sync();
         }
     }
