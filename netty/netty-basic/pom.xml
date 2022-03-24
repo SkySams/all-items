@@ -16,6 +16,7 @@
         <module>client</module>
         <module>rpc</module>
         <module>component</module>
+        <module>websocket</module>
     </modules>
 
     <properties>
