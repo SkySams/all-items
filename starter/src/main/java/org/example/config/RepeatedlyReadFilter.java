@@ -35,7 +35,7 @@ public class RepeatedlyReadFilter implements Filter {
 
         AppHttpServeletResponseWrapper responseWrapper = new AppHttpServeletResponseWrapper((HttpServletResponse) response);
         chain.doFilter(request, responseWrapper);
-        this.updateResponseParams(request,response,responseWrapper);
+//        this.updateResponseParams(request,response,responseWrapper);
     }
 
     @Override
