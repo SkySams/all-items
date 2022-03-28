@@ -71,6 +71,7 @@ public class RepeatedlyReadFilter implements Filter {
         logger.info("请求uri: {}",httpServletRequest.getRequestURI());
         logger.info("无版本更改：{}", responseParams);
 
+
         if (StrUtil.isNotEmpty(responseParams)){
             gzipOut.write(responseParams.trim().getBytes());
             gzipOut.flush();
