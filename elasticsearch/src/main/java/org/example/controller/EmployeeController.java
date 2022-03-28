@@ -1,6 +1,8 @@
 package org.example.controller;
 
 import com.google.gson.Gson;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.example.dao.EmployeeRepository;
 import org.example.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import java.util.List;
  * @author: zyh
  * @date: 2022/3/7
  */
+@Api(tags = "ES")
 @RestController
 @RequestMapping("/es")
 public class EmployeeController {
@@ -28,6 +31,7 @@ public class EmployeeController {
      * 添加
      * @return
      */
+    @ApiOperation("添加")
     @RequestMapping("add")
     public String add() {
         Employee employee = null;

@@ -39,6 +39,7 @@ public class Swagger2Config {
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build()
+                .groupName("全部API接口")
                 .securitySchemes(Collections.singletonList(apiKey()))
                 .securityContexts(Collections.singletonList(securityContext()));
     }
@@ -51,6 +52,12 @@ public class Swagger2Config {
                 .version("1.1")
                 .build();
 
+    }
+    @Bean
+    public Docket createRestApiForCs() {
+        return new Docket(DocumentationType.SWAGGER_2).enable(true).apiInfo(apiInfo()).select()
+                .apis(RequestHandlerSelectors.basePackage("org.example.controller"))
+                .paths(PathSelectors.any()).build().groupName("客户满意度").pathMapping("/");
     }
 
     private ApiKey apiKey() {

@@ -33,9 +33,12 @@ public class RepeatedlyReadFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         logger.debug("复制request.getInputStream流");
 
+        /**
+         * AppHttpServeletResponseWrapper 会导致 knife4j-spring-ui 不显示 页面
+         */
         AppHttpServeletResponseWrapper responseWrapper = new AppHttpServeletResponseWrapper((HttpServletResponse) response);
         chain.doFilter(request, responseWrapper);
-//        this.updateResponseParams(request,response,responseWrapper);
+        this.updateResponseParams(request,response,responseWrapper);
     }
 
     @Override
@@ -52,11 +55,6 @@ public class RepeatedlyReadFilter implements Filter {
      */
     private void updateResponseParams(ServletRequest request,ServletResponse response,AppHttpServeletResponseWrapper responseWrapper) throws IOException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-        String apiversion = httpServletRequest.getHeader("apiversion");
-        String platform = httpServletRequest.getHeader("platform");
-        logger.info("版本号: {}", apiversion);
-        logger.info("platform: {}", platform);
-
         HttpServletResponse httpServletResponse = (HttpServletResponse)response;
         httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
         httpServletResponse.setHeader("Cache-Control", "no-cache");
@@ -78,6 +76,9 @@ public class RepeatedlyReadFilter implements Filter {
             gzipOut.flush();
             gzipOut.close();
             logger.info("响应状态：{}", httpServletResponse.getStatus());
+            httpServletResponse.setHeader("Content-Encoding", "gzip");
+            httpServletResponse.getOutputStream().write(bout.toByteArray());
+        } else {
             httpServletResponse.setHeader("Content-Encoding", "gzip");
             httpServletResponse.getOutputStream().write(bout.toByteArray());
         }

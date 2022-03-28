@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(tags = "..")
+@Api(tags = "ORDER")
 @RestController
 public class OrderController {
 
