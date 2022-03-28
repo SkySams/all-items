@@ -7,6 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author: zyh
  * @date: 2022/3/7
+
+ Logstash 同步数据
+ kibana   可视化界面
+
  */
 @MapperScan("org.example.dao")
 @SpringBootApplication
