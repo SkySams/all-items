@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author: zyh
  * @date: 2022/3/7
 
+ elasticsearch 7.14.0 版本
  Logstash 同步数据
  kibana   可视化界面
 
