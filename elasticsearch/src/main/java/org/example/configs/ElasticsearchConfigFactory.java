@@ -17,6 +17,10 @@ import java.time.Duration;
 public class ElasticsearchConfigFactory {
 
     /**
+     *
+     * kibana 新增|更改 账号密码
+     *kibana-keystore add elasticsearch.username
+     *kibana-keystore add elasticsearch.password
 
      更改密码
      https://www.cnblogs.com/wwjj4811/p/14700279.html
