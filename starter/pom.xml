@@ -67,7 +67,9 @@
             <version>8.16</version>
         </dependency>
 
-<!--        https://github.com/caofanCPU/knife4j -->
+<!--        https://github.com/caofanCPU/knife4j
+      https://doc.xiaominfo.com/knife4j/documentation/changelog.html
+ -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-micro-spring-boot-starter</artifactId>
