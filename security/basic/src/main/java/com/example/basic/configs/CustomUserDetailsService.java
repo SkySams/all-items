@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
+ *
+ * UserDetailsService可以通过loadUserByUsername获取UserDetails对象。该接口供spring security进行用户验证。
+ * 通常使用自定义一个CustomUserDetailsService来实现UserDetailsService接口，通过自定义查询UserDetails。
+ *
  * @author: zyh
  * @date: 2022/4/7
  */
