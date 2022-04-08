@@ -222,7 +222,7 @@ public class EmployeeController {
     @ApiOperation(value = "左匹配模糊搜索",notes = "左 匹配模糊搜索")
     @RequestMapping(value = "fuzzy/search", method = RequestMethod.GET)
     public List<Employee> fuzzySearch(@RequestParam String lastName){
-        return employeeRepository.findByLastNameLike(lastName);
+        return employeeRepository.findByLastNameContaining(lastName);
     }
 
 
