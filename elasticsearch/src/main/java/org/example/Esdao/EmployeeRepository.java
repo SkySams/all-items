@@ -102,4 +102,5 @@ public interface EmployeeRepository extends ElasticsearchRepository<Employee, St
      * @return
      */
     List<Employee> findByLastNameLike(String lastName);
+
 }

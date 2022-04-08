@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -218,10 +219,10 @@ public class EmployeeController {
         return employee;
     }
 
-    @ApiOperation("模糊搜索")
+    @ApiOperation(value = "左匹配模糊搜索",notes = "左 匹配模糊搜索")
     @RequestMapping(value = "fuzzy/search", method = RequestMethod.GET)
     public List<Employee> fuzzySearch(@RequestParam String lastName){
-        return  employeeRepository.findByLastNameLike(lastName);
+        return employeeRepository.findByLastNameLike(lastName);
     }
 
 
