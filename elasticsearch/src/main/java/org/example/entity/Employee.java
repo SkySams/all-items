@@ -9,6 +9,8 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 /**
  * @author: zyh
  * @date: 2022/3/7
+ *
+ * indexName 索引名称
  */
 @Data
 @Document(indexName = "employee")

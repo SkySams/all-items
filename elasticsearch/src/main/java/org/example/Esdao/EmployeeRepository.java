@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Component;
 
@@ -95,4 +96,10 @@ public interface EmployeeRepository extends ElasticsearchRepository<Employee, St
      */
     Employee findFirstByLastName(String lastName);
 
+    /**
+     * 左 匹配模糊搜索
+     * @param lastName
+     * @return
+     */
+    List<Employee> findByLastNameLike(String lastName);
 }

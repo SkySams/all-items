@@ -4,11 +4,19 @@ import com.google.gson.Gson;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.TermQueryBuilder;
+import org.elasticsearch.search.sort.SortBuilders;
+import org.elasticsearch.search.sort.SortOrder;
 import org.example.Esdao.EmployeeRepository;
 import org.example.dao.ProductDao;
 import org.example.entity.Employee;
 import org.example.entity.Product;
 import org.springframework.data.domain.*;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -177,16 +185,13 @@ public class EmployeeController {
         return employeeRepository.findByFirstName(firstName, Pageable.unpaged().first());
     }
 
-    @ApiOperation("搜索")
+    @ApiOperation(value = "搜索",notes = "分页+搜索")
     @GetMapping("findByFirstNameOrLastName")
-    @ApiImplicitParam(value = "大小", name = "size",defaultValue = "1")
+    @ApiImplicitParam(value = "大小", name = "size", defaultValue = "1")
     public Page<Employee> findByFirstNameOrLastName(@RequestParam int size, @RequestParam String firstName, @Pattern(regexp = "$|[\\u4E00-\\u9FA5A-Za-z0-9\\u0020]+", message = "请输入英文或中文或数字") @RequestParam String lastName) {
-        return employeeRepository.findByFirstNameOrLastName(firstName, lastName,Pageable.ofSize(size));
+        return employeeRepository.findByFirstNameOrLastName(firstName, lastName, Pageable.ofSize(size));
     }
 
-    /**
-     * 有错误
-     */
     @ApiOperation("错误演示")
     @RequestMapping(value = "/pageFindByLastName", method = RequestMethod.GET)
     public List<Employee> pageFindByLastName(@RequestParam String lastName) {
@@ -212,5 +217,13 @@ public class EmployeeController {
         Employee employee = employeeRepository.findFirstByLastName(lastName);
         return employee;
     }
+
+    @ApiOperation("模糊搜索")
+    @RequestMapping(value = "fuzzy/search", method = RequestMethod.GET)
+    public List<Employee> fuzzySearch(@RequestParam String lastName){
+        return  employeeRepository.findByLastNameLike(lastName);
+    }
+
+
 
 }
