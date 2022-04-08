@@ -55,6 +55,15 @@ public interface EmployeeRepository extends ElasticsearchRepository<Employee, St
     Page<Employee> findByFirstName(String firstName, Pageable pageable);
 
     /**
+     * 分页搜索
+     * @param firstName
+     * @param LastName
+     * @param pageable
+     * @return
+     */
+    Page<Employee> findByFirstNameOrLastName(String firstName, String LastName,Pageable pageable);
+
+    /**
      * slice 分页
      *
      * @param lastName

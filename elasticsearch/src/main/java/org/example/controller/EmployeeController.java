@@ -2,6 +2,7 @@ package org.example.controller;
 
 import com.google.gson.Gson;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.example.Esdao.EmployeeRepository;
 import org.example.dao.ProductDao;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.*;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,7 @@ public class EmployeeController {
 
     @Resource
     private ProductDao productDao;
+
     /**
      * @return
      * @RequestBody Employee employee
@@ -127,6 +130,7 @@ public class EmployeeController {
 
     /**
      * sort 不能是字符串字段
+     *
      * @param page
      * @param size
      * @param sort
@@ -145,8 +149,8 @@ public class EmployeeController {
      */
     @ApiOperation("计算查询")
     @RequestMapping(value = "/count", method = RequestMethod.GET)
-    public long countFirstName() {
-        return employeeRepository.countByFirstName("sam");
+    public long countFirstName(String name) {
+        return employeeRepository.countByFirstName(name);
     }
 
     /**
@@ -170,8 +174,14 @@ public class EmployeeController {
     @ApiOperation("搜索名称")
     @RequestMapping(value = "/pageFindByFirstName", method = RequestMethod.GET)
     public Page<Employee> pageFindByFirstName(@RequestParam String firstName) {
-
         return employeeRepository.findByFirstName(firstName, Pageable.unpaged().first());
+    }
+
+    @ApiOperation("搜索")
+    @GetMapping("findByFirstNameOrLastName")
+    @ApiImplicitParam(value = "大小", name = "size",defaultValue = "1")
+    public Page<Employee> findByFirstNameOrLastName(@RequestParam int size, @RequestParam String firstName, @Pattern(regexp = "$|[\\u4E00-\\u9FA5A-Za-z0-9\\u0020]+", message = "请输入英文或中文或数字") @RequestParam String lastName) {
+        return employeeRepository.findByFirstNameOrLastName(firstName, lastName,Pageable.ofSize(size));
     }
 
     /**
