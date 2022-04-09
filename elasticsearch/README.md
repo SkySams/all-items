@@ -91,17 +91,226 @@ GET /_cat/indices?v
 在索引中添加数据
 (/{index}/_doc/{id}, /{index}/_doc, or /{index}/_create/{id})
 > 例如
-PUT /customer/doc/1?pretty
+PUT /customer/_doc/1?pretty
 {
   "name": "Jack"
 }
 
+获取索引中id为1的数据
+GET /customer/_doc/1?pretty
+
+删除索引
+DELETE /customer?pretty
+
+## 增删改查
+增加文件
+PUT /{index}/_doc/{id}/pretty
+> 会直接覆盖之前的文档
+> Elasticsearch 提供近乎实时的数据操作和搜索功能。
+> 默认情况下，从索引/更新/删除数据到它出现在搜索结果中的时间，您可以预期一秒钟的延迟（刷新间隔）。
+> 这是与 SQL 等其他平台的重要区别，后者在事务完成后数据立即可用。
+
+
+PUT /customer/_doc/1?pretty
+{
+"age": 133
+}
+
+更新文档
+POST /customer/_doc/1/_update?pretty
+>请注意，尽管 Elasticsearch 实际上并没有在后台进行就地更新。
+>每当我们进行更新时，Elasticsearch 都会删除旧文档，然后索引一个新文档，并一次性应用更新。
+
+POST /customer/_doc/1/_update?pretty
+{
+"doc": {"kong": "Hell23o", "age": 1}
+}
+
+POST /customer/_doc/1/_update?pretty
+{
+"script": "ctx._source.age += 5"
+}
+
+删除文档
+DELETE /customer/doc/2?pretty
+
+## 批量处理
+> 格式很严，{} 不能分行
+POST /customer/doc/_bulk?pretty
+curl -X POST "localhost:9200/customer/doc/_bulk?pretty&pretty" -H 'Content-Type: application/json' -d'
+{"index":{"_id":"1"}}
+{"name": "John Doe" }
+{"index":{"_id":"2"}}
+{"name": "Jane Doe" }
+
+POST /customer/doc/_bulk?pretty
+{"update":{"_id":"1"}}
+{"doc": { "name": "John Doe becomes Jane Doe" } }
+{"delete":{"_id":"2"}}
+
+
+POST /bank/_doc/_bulk?pretty
+{"index":{"_id": "2"}}
+{"account_number": 0,"name":"s","firstname": "Bradshaw"}
+
+
+> 批量 API 不会因其中一项操作失败而失败。
+> 如果单个操作因任何原因失败，它将继续处理之后的其余操作。
+> 当批量 API 返回时，它将为每个操作提供一个状态（按照发送的顺序），以便您检查特定操作是否失败
+
+
+## 搜索API REST API
+### *第一种是REST 请求 URI
+/bank/_search?q=*&sort=account_number:asc&pretty
+> took: Elasticsearch 执行搜索的时间（以毫秒为单位）
+> timed_out： 告诉我们搜索是否超时
+> _shards– 告诉我们搜索了多少分片，以及搜索成功/失败的分片计数
+> hits- 搜索结果
+> hits.total– 符合我们搜索条件的文档总数
+> hits.hits– 实际的搜索结果数组（默认为前 10 个文档）
+> hits.sort- 结果的排序键（如果按分数排序则缺失）
+> hits._score和max_score- 暂时忽略这些字段
+
+### * REST 请求正文
+GET /bank/_search
+{
+  "query": { "match_all": {} },
+  "sort": [
+       { "account_number": "asc" }
+  ]
+}
+
+* 排序必须是数字类型
+
+> 搜索全部
+
+GET /bank/_search
+{
+    "query": {"match_all": {}},
+    "sort": [
+         {"account_number" :"asc"}
+    ]
+}
+> 搜索name
+
+GET /customer/_search
+{
+    "query": {"term": {"name":"jack"}}
+}
+
+>"_source": ["account_number","balance"] 它仍然只会返回一个名为_source但在其中的字段，仅包含字段account_number和balance。
+
+GET /bank/_search
+{
+    "query": { "match_all": {} },
+    "_source": [ "balance"]
+}
+
+> "match" : 匹配 account_number 下包含20的
+
+GET /bank/_search
+{
+    "query": { "match": { "account_number": 20 } }
+}
+
+> match_phrase 此示例是match( match_phrase) 的变体
+
+GET /bank/_search
+{
+"query": { "match_phrase": { "address": "Place" } }
+}
+
+> 同时组合must、should和must_not子句。bool此外，我们可以bool在任何这些bool子句中编写查询来模拟任何复杂的多级布尔逻辑
 
 
 
+GET /bank/_search
+{
+    "query": {
+        "bool": {
+            "must": [
+                { "match": { "address": "244" } },
+                { "match": { "address": "Columbus" } }
+            ]
+        }
+    }
+}
 
 
+GET /bank/_search
+{
+    "query": {
+        "bool": {
+        "should": [
+                { "match": { "address": "mill" } },
+                { "match": { "address": "lane" } }
+            ]
+        }
+    }
+}
+> 该bool must_not子句指定了一个查询列表，其中没有一个必须为真才能将文档视为匹配。
 
+GET /bank/_search
+{
+    "query": {
+        "bool": {
+            "must_not": [
+                { "match": { "address": "mill" } },
+                { "match": { "address": "lane" } }
+            ]
+        }
+    }
+}
+
+
+> 总结： 重要的是要了解，一旦您返回搜索结果，Elasticsearch 就会完全处理请求，并且不会维护任何类型的服务器端资源或在结果中打开游标。
+> 这与许多其他平台（例如 SQL）形成鲜明对比，在 SQL 中，您最初可能会预先获得查询结果的部分子集，然后如果您想获取（或翻页）其余部分，
+> 则必须不断返回服务器使用某种有状态的服务器端游标的结果。
+
+
+## URi搜索
+GET /_search
+GET /customer/_search?q=name:JACK
+
+[链接](https://www.elastic.co/guide/en/elasticsearch/reference/6.0/search-uri-request.html)
+>q:查询字符串
+
+>analyzer:分析查询字符串时要使用的分析器名称
+
+>analyze_wildcard: 是否应该分析通配符和前缀查询。默认为false.
+
+>batched_reduce_size: 应该在协调节点上一次减少的分片结果的数量。如果请求中的潜在分片数量可能很大，
+则应将此值用作保护机制以减少每个搜索请求的内存开销。
+
+>default_operator: 要使用的默认运算符可以是AND或 OR。默认为OR.
+
+>lenient: 如果设置为 true 将导致基于格式的失败（例如向数字字段提供文本）被忽略。默认为假。
+
+>explain: 对于每个命中，包含对如何计算命中得分的说明。
+
+>_source: 设置为禁用字段false检索。您还可以使用&_source检索部分文档（ 有关详细信息，请参阅请求正文文档）_source_include_source_exclude
+
+>stored_fields: 为每个命中返回的文档的选择性存储字段，逗号分隔。不指定任何值将导致没有字段返回。
+
+>sort: 排序执行。可以是fieldName, 或 fieldName:asc/的形式fieldName:desc。fieldName 可以是文档中的实际字段，
+也可以是_score表示基于分数排序的特殊名称。可以有多个sort参数（顺序很重要）。
+
+>track_scores: 排序时，设置为true以便仍然跟踪分数并将它们作为每次命中的一部分返回。
+
+>track_total_hits: 设置为false以禁用对匹配查询的命中总数的跟踪
+
+>timeout: 搜索超时，限制要在指定时间值内执行的搜索请求，并在过期时使用累积到该点的命中来保释。默认为无超时
+
+>terminate_after: 为每个分片收集的最大文档数，达到该数量后查询执行将提前终止。
+如果设置，响应将有一个布尔字段terminated_early来指示查询执行是否实际上已终止_early。
+默认为没有 terminate_after。
+
+>from: 要返回的命中的起始索引。默认为0.
+
+>size: 要返回的命中数。默认为10.
+
+>search_type: 要执行的搜索操作的类型。可以是 dfs_query_then_fetch或query_then_fetch。
+             默认为query_then_fetch. 有关可以执行的不同类型的搜索的更多详细信息，请参阅 搜索类型。
 
 
 
