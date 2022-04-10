@@ -19,8 +19,20 @@ public class ElasticsearchConfigFactory {
     /**
      *
      * kibana 新增|更改 账号密码
-     *kibana-keystore add elasticsearch.username
-     *kibana-keystore add elasticsearch.password
+     *
+     kibana-keystore create
+     kibana-keystore add elasticsearch.username elastic
+     kibana-keystore add elasticsearch.password elastic.123
+
+
+     操作：
+     lihuandeMacBook-Pro:bin lihuan$ ls
+     kibana		kibana-keystore	kibana-plugin
+     lihuandeMacBook-Pro:bin lihuan$ ./kibana-keystore list
+     ERROR: Kibana keystore not found. Use 'create' command to create one.
+
+
+
 
      更改密码
      https://www.cnblogs.com/wwjj4811/p/14700279.html
