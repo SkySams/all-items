@@ -346,11 +346,41 @@ GET /customer/_search?q=name:JACK
              默认为query_then_fetch. 有关可以执行的不同类型的搜索的更多详细信息，请参阅 搜索类型。
 
 
+## 聚合执行
+
+GET /bank/_search
+{
+    "size": 10,
+    "aggs": {
+        "group_by_state": {
+            "terms": {
+                "field": "state.keyword"
+            }
+        }
+    }
+}
+> SELECT state, COUNT(*) FROM bank GROUP BY state ORDER BY COUNT(*) DESC
+
+## 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+## 问题
+* 存储类型有哪些？
 
 
 
