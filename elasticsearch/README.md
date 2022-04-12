@@ -1,6 +1,10 @@
 # build  Elasticsearch/Logstash/Kibana
 > https://www.elastic.co/guide/en/elasticsearch/reference/6.0/_basic_concepts.html
 
+# Filebeat 
+收集日集插件
+Filebeat 是使用 Golang 实现的轻量型日志采集器，也是 Elasticsearch stack 里面的一员
+
 ## Elasticsearch basic
 > 是文档存储索引
 > Elasticsearch 是搜索平台（搜索延迟-秒）
