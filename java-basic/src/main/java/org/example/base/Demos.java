@@ -18,9 +18,19 @@ public class Demos {
         List<String> list2 = new ArrayList<>();
         list2.add("a");
         list2.add("b");
-        boolean resul = list.containsAll(list2);
 
-        System.out.println(resul);
+
+        List<String> finalList = list;
+        list2.forEach(s ->{
+          Iterator<String> ite = finalList.iterator();
+          while (ite.hasNext()){
+              if (ite.next().equals(s)){
+                  ite.remove();
+              }
+          }
+        });
+        System.out.println(finalList);
+
 
 //        Iterator<String> iterable = list.iterator();
 //        while (iterable.hasNext()){
