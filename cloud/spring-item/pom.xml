@@ -10,6 +10,7 @@
     <modules>
         <module>custom</module>
         <module>modular</module>
+        <module>gateway</module>
     </modules>
     <packaging>pom</packaging>
     <parent>
