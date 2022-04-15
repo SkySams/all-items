@@ -1,4 +1,4 @@
-package org.example.design.factory.absctract;
+package org.example.design.factory.sabsctract;
 
 import org.example.design.factory.single.BMW;
 import org.example.design.factory.single.BMW520;
