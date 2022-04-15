@@ -7,6 +7,9 @@ package org.example.design.factory.adaptation.classadaptation;
  */
 public class Adapter extends Adaptee implements Target {
 
+    /**
+     * 适配： 改变了方法的行为
+     */
     @Override
     public void request() {
         super.specificRequest();
