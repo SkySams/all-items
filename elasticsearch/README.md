@@ -1,6 +1,27 @@
 # build  Elasticsearch/Logstash/Kibana
 > https://www.elastic.co/guide/en/elasticsearch/reference/6.0/_basic_concepts.html
 
+[客户端链接]https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.14/java-rest-high.html
+
+什么是Elasticsearch
+答：Elasticsearch 是位于Elastic Stack 核心的分布式搜索和分析引擎
+
+Logstash 和 Beats 有助于收集、聚合和丰富您的数据并将其存储在 Elasticsearch 中
+Kibana 使您能够以交互方式探索、可视化和分享对数据的见解，并管理和监控堆栈。
+Elasticsearch 是索引、搜索和分析.
+
+>Elasticsearch 为所有类型的数据提供近乎实时的搜索和分析。
+无论您拥有结构化或非结构化文本、数字数据还是地理空间数据，Elasticsearch 都能以支持快速搜索的方式高效地存储和索引它。
+您可以超越简单的数据检索和聚合信息来发现数据中的趋势和模式。
+随着您的数据和查询量的增长，Elasticsearch 的分布式特性使您的部署能够随之无缝增长。
+
+ * 向应用或网站添加搜索
+ * 存储和分析日志、指标和安全事件数据
+ * 使用机器学习实时自动建模数据行为
+ * 使用 Elasticsearch 作为存储引擎自动化业务工作流程
+ * 使用 Elasticsearch 作为地理信息系统 (GIS) 管理、集成和分析空间信息
+ * 使用 Elasticsearch 作为生物信息学研究工具来存储和处理遗传数据
+
 # Filebeat 
 收集日集插件
 Filebeat 是使用 Golang 实现的轻量型日志采集器，也是 Elasticsearch stack 里面的一员
@@ -9,8 +30,20 @@ Filebeat 启动：
 filebeat -e -c filebeat.yml
 
 ## Elasticsearch basic
-> 是文档存储索引
+> 是文档存储索引  >>>  Elasticsearch 是一个分布式文档存储。
+> 存储已序列化为 JSON 文档的复杂数据结构，当集群中有多个 Elasticsearch 节点时，存储的文档会分布在整个集群中，并且可以从任何节点立即访问。
 > Elasticsearch 是搜索平台（搜索延迟-秒）
+> Elasticsearch 使用一种称为倒排索引的数据结构，它支持非常快速的全文搜索
+
+自定义映射：
+ * 区分全文字符串字段和精确值字符串字段
+ * 执行特定语言的文本分析
+ * 优化字段以进行部分匹配
+ * 使用自定义日期格式
+ * 使用无法自动检测到 geo_point的数据类型geo_shape
+
+问题: 什么是倒挂索引(反向索引)
+> 倒排索引列出了出现在任何文档中的每个唯一单词，并标识了每个单词出现的所有文档
 
 1. 集群
 >集群是一个或多个节点（服务器）的集合，它们一起保存您的整个数据并提供跨所有节点的联合索引和搜索功能。
