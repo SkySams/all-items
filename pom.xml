@@ -17,6 +17,7 @@
         <module>cloud</module>
         <module>netty</module>
         <module>security</module>
+        <module>guava</module>
     </modules>
 
     <properties>
