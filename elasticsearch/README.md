@@ -1,5 +1,5 @@
 # build  Elasticsearch/Logstash/Kibana
-> https://www.elastic.co/guide/en/elasticsearch/reference/6.0/_basic_concepts.html
+[版本文版]https://www.elastic.co/guide/en/elasticsearch/reference/6.0/_basic_concepts.html
 
 [客户端链接]https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.14/java-rest-high.html
 
@@ -21,6 +21,9 @@ Elasticsearch 是索引、搜索和分析.
  * 使用 Elasticsearch 作为存储引擎自动化业务工作流程
  * 使用 Elasticsearch 作为地理信息系统 (GIS) 管理、集成和分析空间信息
  * 使用 Elasticsearch 作为生物信息学研究工具来存储和处理遗传数据
+
+
+
 
 # Filebeat 
 收集日集插件
@@ -44,6 +47,11 @@ filebeat -e -c filebeat.yml
 
 问题: 什么是倒挂索引(反向索引)
 > 倒排索引列出了出现在任何文档中的每个唯一单词，并标识了每个单词出现的所有文档
+
+
+
+### 
+
 
 1. 集群
 >集群是一个或多个节点（服务器）的集合，它们一起保存您的整个数据并提供跨所有节点的联合索引和搜索功能。
@@ -174,8 +182,8 @@ POST /customer/_doc/1/_update?pretty
 删除文档
 DELETE /customer/doc/2?pretty
 
-## 批量处理
-> 格式很严，{} 不能分行
+## 批量处理 一定、一定、一定 需要加入_bulk后缀
+> 格式很严，{} 不能分行 
 POST /customer/doc/_bulk?pretty
 curl -X POST "localhost:9200/customer/doc/_bulk?pretty&pretty" -H 'Content-Type: application/json' -d'
 {"index":{"_id":"1"}}

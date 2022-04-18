@@ -17,6 +17,7 @@ import org.example.entity.Product;
 import org.springframework.data.domain.*;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -45,6 +46,7 @@ public class EmployeeController {
      * @RequestBody Employee employee
      * 添加
      */
+    @Transactional
     @ApiOperation("添加")
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String add(@RequestBody Employee employee) {
