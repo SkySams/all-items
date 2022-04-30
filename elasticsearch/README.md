@@ -50,7 +50,130 @@ filebeat -e -c filebeat.yml
 
 
 
-### 
+### 字段数据类型
+每个字段都有一个字段数据类型或字段类型。此类型指示字段包含的数据类型（例如字符串或布尔值）及其预期用途。
+例如， 您可以将字符串索引到text和keyword 字段。
+但是， 会分析text字段值以进行全文，而保留字符串以进行搜索和排序。kerword
+
+字段类型按family分组。同一家族中的类型支持相同的搜索功能，但可能具有不同的空间使用或性能特征
+
+目前， 唯一的类型族是keyword, 它由keyword、constant_keyword和wildword字段类型组成。
+其他类型只有一个字段类型，例如，boolean 类型族有一种字段类型组成：boolean
+
+[常见的类型] https://www.elastic.co/guide/en/elasticsearch/reference/7.14/mapping-types.html#aggregated-data-types
+
+binary:
+> 编码为Base64字符串的二进制值
+
+boolean:
+> true 和 false 值
+
+keyword:
+> 关键字，包含keyword、constant_keyword 和 wildword
+
+number:
+> 数字类型，例如long和double,用于表示金额
+
+dates:
+> 日期类型，包含date和date_nanos
+
+alias:
+> 为现有的字段定义别名
+
+对象和关系类型
+
+object:
+> 一个json对象
+
+flattened
+> 整个JSON对象作为单个字段值
+
+nested
+> 保留其子字段之间关系的json对象
+
+join
+> 为同一索引中的文档定义父/子关系
+
+结构化数据类型
+
+range:
+> 范围类型，例如 long_range、double_range、date_range和ip_range
+
+ip
+> IPv4 和　IPv6 地址
+
+version
+> 软件版本。[支持语义版本控制]https://semver.org/lang/zh-CN/ 优先规则。
+
+murmur3
+> 计算和存储值的哈希值。
+
+聚合数据类型
+
+aggregate_metric_double
+> 预先汇总的指标值
+
+histogram
+> 直方图形式的预聚合数值
+
+文本搜索类型
+
+text
+> 文本族，包含text和match_only_text。分析的非结构化文本
+
+annotated_text
+> 包含特殊标记的文本。用于识别命名实体
+
+completion
+> 用于自定完成建议
+
+search_as_you_type
+> text-like 类型，用于输入时完成
+
+token_count
+> 文本中标记的计数
+
+文档排名类型
+
+dense_vector
+> 记录浮点值的密集向量
+
+sparse_vector
+> 记录浮点的稀疏向量。
+
+rank_feature
+> 记录数字特征以查询时提高命中率
+
+rank_features
+> 记录数字特征以在查询时提高命中率
+
+空间数据类型
+
+geo_point
+> 维度和经度点
+
+geo_shape
+> 复杂的形状，例如多边形
+
+point
+> 任意笛卡尔点。
+
+shape
+> 任意笛卡尔几何。
+
+其他类型
+
+percolator
+> 索引用[Qury DSL] https://www.elastic.co/guide/en/elasticsearch/reference/7.14/query-dsl.html 编辑的查询
+
+组数
+> 在 Elasticsearch 中，数组不需要专用的字段数据类型。默认情况下，任何字段都可以包含零个或多个值，
+> 但是，数组中的所有值必须是相同的字段类型。[请参阅] https://www.elastic.co/guide/en/elasticsearch/reference/7.14/array.html
+
+多领域
+> 出于不同目的以不同方式索引同一字段通常很有用。
+> 例如，一个string字段可以映射为一个text用于全文搜索的字段，也可以映射为一个keyword用于排序或聚合的字段。
+> standard或者，您可以使用分析器、 english分析器和 french分析器索引文本字段
 
 
 1. 集群
