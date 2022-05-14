@@ -10,7 +10,7 @@
 > SHOW FULL COLUMNS FROM tableName
 
 1.3 往表中添加新字段
-> UPDATE TABLE tableName ADD 字段名称 字段数据类型（VARCHER(150)）NOT NULL DEFAULT '' COMMENT "注释";
+> ALTER TABLE tableName ADD 字段名称 字段数据类型（VARCHER(150)）NOT NULL DEFAULT '' COMMENT "注释";
 
 1.4 连表查询更新数据
 > UPDATE tableName1 INSER JOIN tableName2 on tableName1.id = tableName2.id set tableName1.name = tableName2.name;
