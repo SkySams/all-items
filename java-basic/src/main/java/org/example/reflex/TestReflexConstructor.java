@@ -1,6 +1,7 @@
 package org.example.reflex;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 /**
@@ -22,6 +23,22 @@ public class TestReflexConstructor {
             System.out.println(Arrays.asList(constructors));
 
             // 获取无参构造函数
+            try {
+                Constructor c2 = cla.getDeclaredConstructor();
+                Object object =  c2.newInstance();
+                System.out.println(object);
+                if (object instanceof MyReflex){
+                    System.out.println(((MyReflex) object).getNo());
+                }
+            } catch (SecurityException | NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
 
 
         } catch (ClassNotFoundException e) {
