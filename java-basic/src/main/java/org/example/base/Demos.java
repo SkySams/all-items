@@ -1,5 +1,7 @@
 package org.example.base;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -29,7 +31,8 @@ public class Demos {
               }
           }
         });
-        System.out.println(finalList);
+
+
 
 
 //        Iterator<String> iterable = list.iterator();

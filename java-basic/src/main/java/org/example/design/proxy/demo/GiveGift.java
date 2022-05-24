@@ -7,7 +7,7 @@ package org.example.design.proxy.demo;
 public interface GiveGift {
 
     /**
-     * 送花
+     * 送花花店
      */
     void giveFlowers();
 

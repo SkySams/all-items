@@ -7,10 +7,9 @@ package org.example.design.proxy.demo;
 public class Client {
 
     public static void main(String[] args) {
-        BeautifulGirl mm = new BeautifulGirl("nice");
+        BeautifulGirl mm = new BeautifulGirl("lvsi");
 
         HerChum chum = new HerChum(mm);
-
         chum.giveBook();
         chum.giveChocolate();
         chum.giveFlowers();
