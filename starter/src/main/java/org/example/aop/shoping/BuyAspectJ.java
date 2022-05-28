@@ -20,7 +20,7 @@ public class BuyAspectJ {
     @Pointcut("execution(* org.example.aop.shoping.IBuy.buy(double)) &&" +
             "args(prise) && bean(girl)")
     public void gif(double prise){
-
+        System.out.println("切入点"+prise);
     }
 
     @Around("gif(price)")

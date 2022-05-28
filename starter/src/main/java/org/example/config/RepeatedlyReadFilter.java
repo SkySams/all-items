@@ -36,9 +36,9 @@ public class RepeatedlyReadFilter implements Filter {
         /**
          * AppHttpServeletResponseWrapper 会导致 knife4j-spring-ui 不显示 页面
          */
-        AppHttpServeletResponseWrapper responseWrapper = new AppHttpServeletResponseWrapper((HttpServletResponse) response);
-        chain.doFilter(request, responseWrapper);
-        this.updateResponseParams(request,response,responseWrapper);
+//        AppHttpServeletResponseWrapper responseWrapper = new AppHttpServeletResponseWrapper((HttpServletResponse) response);
+        chain.doFilter(request, response);
+//        this.updateResponseParams(request,response,responseWrapper);
     }
 
     @Override

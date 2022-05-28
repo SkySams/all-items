@@ -14,7 +14,7 @@ public class AopTest {
     public  void main() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         Girl girl = (Girl) context.getBean("girl");
-        girl.buy(900);
+        System.out.println(girl.buy(900));
     }
 
 
