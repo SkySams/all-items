@@ -2,6 +2,8 @@ package org.example.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.example.annotation.OperationLog;
+import org.example.encapsulat.Result;
 import org.example.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,12 +19,12 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @OperationLog(value = "测试")
     @ApiOperation("ONE")
     @GetMapping("order")
-    public String one(@RequestParam String name){
+    public Result<String> one(@RequestParam String name){
         orderService.play();
-
-        return "success";
+        return Result.success("success");
     }
 
 }

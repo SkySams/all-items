@@ -41,7 +41,7 @@ public class LogAspect {
     private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
-    private final String POINT_CUT = "execution(public * org.example.controller.*.*(..))";
+    private final String POINT_CUT = "execution(public * org.example.controller1.*.*(..))";
 
     @Pointcut(POINT_CUT)
     public void pointCut() {
