@@ -63,7 +63,7 @@ public class AopLog {
     }
 
     @Around("pointcut()")
-    public Object rou( ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public Object around( ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 
 //        System.out.println("--"+proceedingJoinPoint.getArgs());
 

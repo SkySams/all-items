@@ -91,18 +91,7 @@ public class CreateThreadModeTest {
  */
 class OneCreateThreadMode extends Thread {
 
-    /**
-     * If this thread was constructed using a separate
-     * <code>Runnable</code> run object, then that
-     * <code>Runnable</code> object's <code>run</code> method is called;
-     * otherwise, this method does nothing and returns.
-     * <p>
-     * Subclasses of <code>Thread</code> should override this method.
-     *
-     * @see #start()
-     * @see #stop()
-     * //     * @see #Thread(ThreadGroup, Runnable, String)
-     */
+
     @Override
     public void run() {
         this.execute();
@@ -123,17 +112,7 @@ class OneCreateThreadMode extends Thread {
  */
 class TwoCreateThreadMode implements Runnable {
 
-    /**
-     * When an object implementing interface <code>Runnable</code> is used
-     * to create a thread, starting the thread causes the object's
-     * <code>run</code> method to be called in that separately executing
-     * thread.
-     * <p>
-     * The general contract of the method <code>run</code> is that it may
-     * take any action whatsoever.
-     *
-     * @see Thread#run()
-     */
+
     @Override
     public void run() {
         this.execute();
@@ -150,12 +129,7 @@ class TwoCreateThreadMode implements Runnable {
  */
 class ThreeCreateThreadMode implements Callable<Integer> {
 
-    /**
-     * Computes a result, or throws an exception if unable to do so.
-     *
-     * @return computed result
-     * @throws Exception if unable to compute a result
-     */
+
     @Override
     public Integer call() throws Exception {
         this.execute();
