@@ -2,10 +2,7 @@ package org.example.base;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -15,22 +12,34 @@ import java.util.stream.Collectors;
 public class Demos {
 
     public static void main(String[] args) {
-        List<String> list = Arrays.asList("a","b","c");
-        list = list.stream().map(s ->s ).collect(Collectors.toList());
-        List<String> list2 = new ArrayList<>();
-        list2.add("a");
-        list2.add("b");
+
+            Set<Integer> set1 = new HashSet<>();
+            set1.add(1);
+            set1.add(2);
+            set1.add(3);
+
+            Set<Integer> set2 = new HashSet<>();
+            set2.add(1);
+            System.out.println(  set1.stream().filter(in -> !set2.contains(in)).count());
 
 
-        List<String> finalList = list;
-        list2.forEach(s ->{
-          Iterator<String> ite = finalList.iterator();
-          while (ite.hasNext()){
-              if (ite.next().equals(s)){
-                  ite.remove();
-              }
-          }
-        });
+
+//        List<String> list = Arrays.asList("a","b","c");
+//        list = list.stream().map(s ->s ).collect(Collectors.toList());
+//        List<String> list2 = new ArrayList<>();
+//        list2.add("a");
+//        list2.add("b");
+//
+//
+//        List<String> finalList = list;
+//        list2.forEach(s ->{
+//          Iterator<String> ite = finalList.iterator();
+//          while (ite.hasNext()){
+//              if (ite.next().equals(s)){
+//                  ite.remove();
+//              }
+//          }
+//        });
 
 
 
