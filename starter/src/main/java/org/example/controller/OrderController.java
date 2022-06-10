@@ -16,6 +16,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Date;
 
@@ -23,7 +25,9 @@ import java.util.Date;
 @Api(tags = "ORDER")
 @RestController
 @RequestMapping("/order")
-public class OrderController {
+public class OrderController extends BaseController {
+
+
 
     @Qualifier("CustomServiceImpl")
     @Autowired
@@ -38,6 +42,7 @@ public class OrderController {
     @ApiOperation("ADD")
     @PostMapping("/app")
     public Result add(@RequestBody @Valid  AppointmentForm appointment) throws Exception {
+        log.info("app:{}",request.getRequestURI());
         return  Result.success("");
     }
 

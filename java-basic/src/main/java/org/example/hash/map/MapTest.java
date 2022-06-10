@@ -11,7 +11,7 @@ public class MapTest {
 
     public static void main(String[] args) {
         Map<String,String> map = new HashMap<>();
-        System.out.println((100 >> 4));
+        System.out.println(Integer.toString(300));
     }
 
 }
