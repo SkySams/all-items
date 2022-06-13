@@ -17,6 +17,7 @@
         <module>rpc</module>
         <module>component</module>
         <module>websocket</module>
+        <module>nbasic</module>
     </modules>
 
     <properties>
