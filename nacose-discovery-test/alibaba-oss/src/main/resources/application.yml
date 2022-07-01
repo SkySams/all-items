@@ -1,0 +1,7 @@
+server:
+  port: 20
+spring:
+  cloud:
+    alicloud:
+      access-key:
+      secret-key:

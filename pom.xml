@@ -18,6 +18,8 @@
         <module>netty</module>
         <module>security</module>
         <module>guava</module>
+        <module>mall</module>
+        <module>nacose-discovery-test</module>
     </modules>
 
     <properties>

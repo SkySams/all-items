@@ -13,14 +13,25 @@ public class Demos {
 
     public static void main(String[] args) {
 
-            Set<Integer> set1 = new HashSet<>();
-            set1.add(1);
-            set1.add(2);
-            set1.add(3);
+//            Set<Integer> set1 = new HashSet<>();
+//            set1.add(1);
+//            set1.add(2);
+//            set1.add(3);
+//
+//            Set<Integer> set2 = new HashSet<>();
+//            set2.add(1);
+//            System.out.println(  set1.stream().filter(in -> !set2.contains(in)).count());
 
-            Set<Integer> set2 = new HashSet<>();
-            set2.add(1);
-            System.out.println(  set1.stream().filter(in -> !set2.contains(in)).count());
+            Map<String,String> map = new HashMap<String,String>();
+            map.put("null",null);
+            map.put(null,"nice");
+
+            System.out.println(map.containsKey("null"));
+
+           Set<Map.Entry<String,String>> set = map.entrySet();
+           for (Map.Entry entry : set){
+                   System.out.println(entry.getValue());
+           }
 
 
 

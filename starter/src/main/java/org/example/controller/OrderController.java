@@ -55,4 +55,10 @@ public class OrderController extends BaseController {
         return Result.success("success");
     }
 
+    @ApiOperation(value = "repson")
+    @GetMapping("repson")
+    public Result<Respon> dmeo(){
+        return Result.success(new Respon(null,"1","2"));
+    }
+
 }

@@ -16,6 +16,13 @@ import java.util.concurrent.*;
 public class CreateThreadModeTest {
 
     /**
+     线程池有点:
+     1、降低系统资质消耗
+     2、提高请求的相应速度
+     3、统一管理、分配、调优、监控
+     */
+
+    /**
      * 创建线程方式1
      */
     @Test
