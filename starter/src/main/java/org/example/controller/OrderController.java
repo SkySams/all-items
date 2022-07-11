@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,6 +52,8 @@ public class OrderController extends BaseController {
     @ApiOperation("ONE")
     @GetMapping("order")
     public Result<String> one(@RequestParam String name){
+        String sda = HtmlUtils.htmlUnescape(name);
+        System.out.println(sda);
         orderService.play();
         return Result.success("success");
     }
