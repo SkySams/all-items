@@ -9,9 +9,11 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,5 +33,21 @@ public class HttpEntityController {
         List<Product> productList = productService.list();
         return new ResponseEntity(productList, HttpStatus.OK);
     }
+
+    @ApiOperation("自动生成数据")
+    @GetMapping
+    public String automaticallyGenerate(@RequestParam Integer size){
+        List<Product> productList = new ArrayList<>(size);
+        for (int i =0; i < size; i++){
+            Product product = new Product();
+            product.setId((size+i));
+//            product.setName("Name"+i);
+            product.setNum(i+100);
+            productList.add(product);
+        }
+        productService.insertBatchSomeColumn(productList);
+        return "success";
+    }
+
 
 }

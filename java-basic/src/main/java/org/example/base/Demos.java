@@ -1,7 +1,17 @@
 package org.example.base;
 
+import cn.hutool.core.date.ChineseDate;
+import cn.hutool.core.date.DateField;
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.date.LocalDateTimeUtil;
+import cn.hutool.core.util.StrUtil;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -59,13 +69,33 @@ public class Demos {
         System.out.println(unicodeEncode + " ---> " + zh_str);
     }
 
+    public static Date sd(LocalDateTime localDateTime){
+        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+//        return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+    }
 
 
     public static void main(String[] args) {
 
 //        test();
-        System.out.println(unicodeDecode("\\u5546\\u54c1\\u5df2\\u7ecf\\u5df2\\u6dfb\\u52a0\\u5230\\u4e86\\u79d2\\u6740\\u6d3b\\u52a8\\u4e2d\\uff0c\\u63d0\\u4ea4\\u5931\\u8d25"));
-        System.out.println(unicodeEncode("商品已经已添加到了秒杀活动中，提交失败"));
+        System.out.println(unicodeDecode("api\\u6A21\\u5757"));
+        System.out.println(unicodeEncode("配置模块"));
+
+        LocalDateTime localDateTime = LocalDateTimeUtil.of(new Date());
+//        LocalDateTime offset = LocalDateTimeUtil.offset(localDateTime, 30, ChronoUnit.MINUTES);
+        LocalDateTime time = localDateTime.plus(30, ChronoUnit.MINUTES);
+        System.out.println(time);
+        System.out.println(sd(time));
+
+        Date lotteryCloseTime = DateUtil.offset(new Date(), DateField.MINUTE,30);
+        System.out.println(lotteryCloseTime);
+
+        ChineseDate chineseDate = new ChineseDate(2021,1,30);
+//        System.out.println(chineseDate);
+        System.out.println(chineseDate.getGregorianDate());
+
+        String zodiac = DateUtil.getZodiac(Month.JANUARY.getValue(), 30);
+        System.out.println(zodiac);
 
 //            Set<Integer> set1 = new HashSet<>();
 //            set1.add(1);

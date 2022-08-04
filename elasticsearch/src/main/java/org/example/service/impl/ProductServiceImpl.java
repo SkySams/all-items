@@ -6,10 +6,17 @@ import org.example.entity.Product;
 import org.example.service.ProductService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author: zyh
  * @date: 2022/3/28
  */
 @Service("productService")
 public class ProductServiceImpl extends ServiceImpl<ProductDao, Product> implements ProductService {
+
+    @Override
+    public Integer insertBatchSomeColumn(List<Product> list) {
+        return this.baseMapper.insertBatchSomeColumn(list);
+    }
 }
