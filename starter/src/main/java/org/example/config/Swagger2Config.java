@@ -35,7 +35,7 @@ public class Swagger2Config {
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo()).enable(retul)
-                .host("127.0.0.1")
+                .host("127.0.0.1:8033")
                 .protocols(new HashSet<>(Collections.singletonList("http")))
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("org.example.controller"))

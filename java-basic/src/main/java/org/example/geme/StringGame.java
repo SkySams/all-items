@@ -1,4 +1,4 @@
-package org.example.game;
+package org.example.geme;
 
 import org.junit.Test;
 
