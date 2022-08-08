@@ -4,16 +4,14 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.example.encapsulat.Result;
-import org.example.entiry.model.Account;
-import org.example.entiry.model.Pet;
+import org.example.entity.model.Account;
+import org.example.entity.model.Pet;
 import org.springframework.http.*;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.io.UnsupportedEncodingException;
-import java.security.acl.Owner;
 
 /**
  * @author: zyh

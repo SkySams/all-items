@@ -1,4 +1,4 @@
-package org.example.entiry.model;
+package org.example.entity.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;

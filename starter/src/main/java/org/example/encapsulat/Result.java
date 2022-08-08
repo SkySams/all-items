@@ -33,11 +33,7 @@ public class Result<T> {
         this(code, message);
         this.data = data;
     }
-    /**
-     * @desc 操作成功
-     * @auther cwhisky-heyang
-     * @date 2021/9/30 10:33
-     */
+
     public  static <T> Result<T> success(T data){
         return new Result<>(200, "success",data);
     }

@@ -3,11 +3,13 @@ package org.example;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * @author: zyh
  * @date: 2022/3/4
  */
+@EnableAsync // 开启异步请求
 @SpringBootApplication
 @ConfigurationPropertiesScan(basePackages="org.example.**")
 public class Starter {

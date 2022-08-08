@@ -1,5 +1,7 @@
 package org.example.generic;
 
+import java.util.List;
+
 /**
  * @author: zyh
  * @date: 2022/8/6
@@ -50,6 +52,16 @@ public class Util {
             }
         }
         return count;
+    }
+
+    public static <E> void append(List<E> list){
+//        E elem = new E(); // type parameter 'E' cannot be instantiated directly
+//        list.add(elem);
+    }
+
+    public static <E> void append(List<E> list,Class<E> cla) throws InstantiationException, IllegalAccessException {
+        E e = cla.newInstance();
+        list.add(e);
     }
 
 

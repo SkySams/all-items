@@ -38,7 +38,6 @@ public class Swagger2Config {
                 .host("127.0.0.1:8033")
                 .protocols(new HashSet<>(Collections.singletonList("http")))
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("org.example.controller"))
                 .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
