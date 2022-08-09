@@ -25,3 +25,6 @@ spring:
         core-size: 16  # 线程池有16条线程
         queue-capacity: 100
         keep-alive: 10s  # 空闲10秒就会被回收
+
+knife4j:
+  enable: true

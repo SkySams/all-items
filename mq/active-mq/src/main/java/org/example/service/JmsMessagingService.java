@@ -1,6 +1,7 @@
 package org.example.service;
 
 import javax.jms.Destination;
+import javax.jms.JMSException;
 
 /**
  * @author: zyh
@@ -16,7 +17,7 @@ public interface JmsMessagingService {
     void sendMessage(Destination destination, final String message);
 
     /**
-     * 定时发送
+     * 延时发送
      *
      * @param destination
      * @param message

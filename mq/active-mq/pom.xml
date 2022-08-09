@@ -51,6 +51,11 @@
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-pool</artifactId>
         </dependency>
+        <dependency>
+            <artifactId>knife4j</artifactId>
+            <groupId>org.example</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

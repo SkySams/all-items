@@ -51,21 +51,26 @@ public class JmsMessagingServiceImpl implements JmsMessagingService {
      * @param message
      */
     @Override
-    public void sendMessage(Destination destination, String message, long time) {
+    public void sendMessage(Destination destination, String message, long time)  {
         log.info("延迟发送信息：{}",message);
-
-//        jmsQueueTemplate.send("active.queue", session -> {
-//            TextMessage textMessage = session.createTextMessage(message);
-//            textMessage.setLongProperty(ScheduledMessage.AMQ_SCHEDULED_DELAY, time * 100);
-//            return textMessage;
-//        });
+        try {
+            System.out.println(((Queue)destination).getQueueName());
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
+        //
+        jmsQueueTemplate.send("active.queue", session -> {
+            TextMessage textMessage = session.createTextMessage(message);
+            textMessage.setLongProperty(ScheduledMessage.AMQ_SCHEDULED_DELAY, time);
+            return textMessage;
+        });
 
 //        Map<String, Object> map = new HashMap<>();
 //        map.put(ScheduledMessage.AMQ_SCHEDULER_MANAGEMENT_DESTINATION, time);
 //        jmsMessagingTemplate.convertAndSend(destination, message, map);
 
 
-        this.delaySend(destination,message,time);
+//        this.delaySend(destination,message,time);
     }
 
     /**

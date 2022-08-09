@@ -1,9 +1,8 @@
-package org.example.configs;
+package org.example.config;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -25,7 +24,6 @@ import java.util.List;
  */
 @EnableSwagger2
 @Configuration
-@ConditionalOnProperty(value = "swagger.enable", havingValue = "true", matchIfMissing = true)
 public class Swagger2Config {
 
     @Value("${knife4j.enable}")
