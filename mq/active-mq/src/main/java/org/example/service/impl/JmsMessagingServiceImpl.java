@@ -53,12 +53,12 @@ public class JmsMessagingServiceImpl implements JmsMessagingService {
     @Override
     public void sendMessage(Destination destination, String message, long time)  {
         log.info("延迟发送信息：{}",message);
-        try {
-            System.out.println(((Queue)destination).getQueueName());
-        } catch (JMSException e) {
-            e.printStackTrace();
-        }
-        //
+//        try {
+//            System.out.println(((Queue)destination).getQueueName());
+//        } catch (JMSException e) {
+//            e.printStackTrace();
+//        }
+//        //
         jmsQueueTemplate.send("active.queue", session -> {
             TextMessage textMessage = session.createTextMessage(message);
             textMessage.setLongProperty(ScheduledMessage.AMQ_SCHEDULED_DELAY, time);
