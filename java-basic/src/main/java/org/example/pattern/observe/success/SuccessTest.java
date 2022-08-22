@@ -10,7 +10,6 @@ public class SuccessTest {
         WeatherData data=new WeatherData();
         data.registerObserver(new CurrentConditions());
         data.setData("1", "2", "3");
-        data.registerObserver(new Baidu());
         data.setData("3", "4", "5");
     }
 }

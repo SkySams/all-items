@@ -21,6 +21,7 @@
         <module>mall</module>
         <module>nacose-discovery-test</module>
         <module>knife4j</module>
+        <module>seata</module>
     </modules>
 
     <properties>

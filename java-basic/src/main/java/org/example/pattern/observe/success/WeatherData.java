@@ -24,7 +24,7 @@ public class WeatherData implements Subject{
     }
 
     public void dataChange() {
-        current.update(getTemperature(), getHumidity(), getPressure());
+//        current.update(getTemperature(), getHumidity(), getPressure());
     }
 
 
