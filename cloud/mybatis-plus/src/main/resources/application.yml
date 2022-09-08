@@ -12,10 +12,11 @@ spring:
       primary: master
       datasource:
         master:
-          url: jdbc:mysql://192.168.0.161:3306/cwhisky_stock?useSSL=false&serverTimezone=Hongkong&useUnicode=true
+          url: jdbc:mysql://127.0.0.1:3306/user?useSSL=false&serverTimezone=Hongkong&useUnicode=true
           username: root
-          publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAPYYPHC6HE9LL7m4dV3Lku3TYp/aQDpzcptt3qU1JtCw9GPaafu8nYe3iUlyyT2Fru3loYzdejsVIGXgghNUcHcCAwEAAQ==
-          password: MWOEu0rD3Wv9f/hWR9zBPSKs0T8xpTGl3m/ciRWHjO0xgm41KbYqiePTpXB9UP0GOWuFRcwS0n6vh9q4klilhg==
+          password: 123456
+#          publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAPYYPHC6HE9LL7m4dV3Lku3TYp/aQDpzcptt3qU1JtCw9GPaafu8nYe3iUlyyT2Fru3loYzdejsVIGXgghNUcHcCAwEAAQ==
+#          password: MWOEu0rD3Wv9f/hWR9zBPSKs0T8xpTGl3m/ciRWHjO0xgm41KbYqiePTpXB9UP0GOWuFRcwS0n6vh9q4klilhg==
 #          type: com.alibaba.druid.pool.DruidDataSource
           driverClassName: com.mysql.cj.jdbc.Driver
           initialSize: 5
