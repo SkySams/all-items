@@ -77,9 +77,9 @@ public class Demos {
 
     public static void main(String[] args) {
 
-//        test();
-        System.out.println(unicodeDecode("api\\u6A21\\u5757"));
-        System.out.println(unicodeEncode("配置模块"));
+//        test(); [{0}]
+        System.out.println(unicodeDecode("\\u8be5\\u65f6\\u95f4\\u6bb5\\u5185\\u005b\\u007b\\u0030\\u007d\\u005d\\u5546\\u54c1\\u5df2\\u7ecf\\u5df2\\u6dfb\\u52a0\\u5230\\u4e86\\u79d2\\u6740\\u6d3b\\u52a8\\u4e2d\\uff0c\\u63d0\\u4ea4\\u5931\\u8d25\\u0021"));
+        System.out.println(unicodeEncode("该时间段内[{0}]商品已经已添加到了秒杀活动中，提交失败!"));
 
         LocalDateTime localDateTime = LocalDateTimeUtil.of(new Date());
 //        LocalDateTime offset = LocalDateTimeUtil.offset(localDateTime, 30, ChronoUnit.MINUTES);

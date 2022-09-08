@@ -1,6 +1,5 @@
 package org.example.function;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
@@ -20,7 +19,7 @@ public class FunctionTest {
     }
 
 
-    public static void getConsumer(String str, @NotNull Consumer<String> consumer){
+    public static void getConsumer(String str,  Consumer<String> consumer){
         consumer.accept(str);
     }
 
