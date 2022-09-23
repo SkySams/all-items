@@ -23,7 +23,7 @@ spring:
       primary: master
       datasource:
         master:
-          url: jdbc:mysql://127.0.0.1:3306/mall_ums?useSSL=false&serverTimezone=Hongkong&useUnicode=true
+          url: jdbc:mysql://127.0.0.1:3306/mall_stock?useSSL=false&serverTimezone=Hongkong&useUnicode=true
           username: root
           password: 123456
           type: com.alibaba.druid.pool.DruidDataSource

@@ -16,18 +16,18 @@ import java.util.List;
  * @date: 2022/7/23
  */
 //@SpringBootTest(classes= Elasticsearch.class)
-@MybatisPlusTest
-public class SampleTest {
-
-    @Resource
-    private UserDao userMapper;
-
-    @Test
-    public void testSelect() {
-        System.out.println(("----- selectAll method test ------"));
-        List<User> userList = userMapper.selectList(null);
-        userList.forEach(System.out::println);
-    }
-
-
-}
+//@MybatisPlusTest
+//public class SampleTest {
+//
+//    @Resource
+//    private UserDao userMapper;
+//
+//    @Test
+//    public void testSelect() {
+//        System.out.println(("----- selectAll method test ------"));
+//        List<User> userList = userMapper.selectList(null);
+//        userList.forEach(System.out::println);
+//    }
+//
+//
+//}

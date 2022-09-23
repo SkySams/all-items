@@ -466,11 +466,24 @@ GET /bank/_search
 
 * 
 
+PUT /employee
+{
+    "mappings": {
+        "properties": {
+            "id": {"type": "integer"},
+            "name": {"type": "text"},
+            "age": {"type": "integer"},
+            "address" :{"type": "text"},
+            "lastName": {"type": "text"}
+        }
+    }
+}
 
 > 总结： 重要的是要了解，一旦您返回搜索结果，Elasticsearch 就会完全处理请求，并且不会维护任何类型的服务器端资源或在结果中打开游标。
 > 这与许多其他平台（例如 SQL）形成鲜明对比，在 SQL 中，您最初可能会预先获得查询结果的部分子集，然后如果您想获取（或翻页）其余部分，
 > 则必须不断返回服务器使用某种有状态的服务器端游标的结果。
 
+* 排序不支持 text 类型
 
 ## URi搜索
 GET /_search
@@ -516,6 +529,10 @@ GET /customer/_search?q=name:JACK
 >search_type: 要执行的搜索操作的类型。可以是 dfs_query_then_fetch或query_then_fetch。
              默认为query_then_fetch. 有关可以执行的不同类型的搜索的更多详细信息，请参阅 搜索类型。
 
+## SORT
+>允许在特定字段上添加一种或多种排序。
+> 每种排序也可以颠倒。
+> 排序是在每个字段级别上定义的，具有特殊的字段名称，用于_score按分数排序，并按_doc索引顺序排序。
 
 ## 聚合执行
 
@@ -534,14 +551,35 @@ GET /bank/_search
 
 ## 
 
+    * asc       按升序排序
+    * desc      按降序排序
+> desc当在 上排序时，顺序默认为，在其他任何东西上排序时_score默认为。asc
 
+> elastic 7 之后取消了type 类型
+> elastic 6 以下的需要添加type类型
 
-
-
-
-
-
-
+PUT /my_index
+{
+    "mappings": {
+        "my_type": {
+            "properties": {
+                "post_date": { "type": "date" },
+                "user": {
+                    "type": "keyword"},
+                    "name": {"type": "keyword"},
+                    "age": { "type": "integer" }
+               } 
+        }
+    }
+}
+GET /_search
+{
+    "from" : 0, "size" : 10,
+    "query" : {
+        "term" : { "user" : "kimchy" }
+     }
+}
+> 请注意，from+size不能超过index.max_result_window 默认为 10,000 的索引设置
 
 
 
