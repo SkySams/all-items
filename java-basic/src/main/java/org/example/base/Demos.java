@@ -74,12 +74,20 @@ public class Demos {
 //        return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
     }
 
+    public static void s(){
+        String type = String.valueOf(25).replace(String.valueOf(5), "");
+        System.out.println(type);
+        System.out.println(StrUtil.isBlank(type)? "0":type);
+    }
 
     public static void main(String[] args) {
+        s();
 
+        System.out.println(System.currentTimeMillis());
+        System.out.println(new Date().getTime());
 //        test(); [{0}]
-        System.out.println(unicodeDecode("\\u8be5\\u65f6\\u95f4\\u6bb5\\u5185\\u005b\\u007b\\u0030\\u007d\\u005d\\u5546\\u54c1\\u5df2\\u7ecf\\u5df2\\u6dfb\\u52a0\\u5230\\u4e86\\u79d2\\u6740\\u6d3b\\u52a8\\u4e2d\\uff0c\\u63d0\\u4ea4\\u5931\\u8d25\\u0021"));
-        System.out.println(unicodeEncode("该时间段内[{0}]商品已经已添加到了阶梯拼团活动中"));
+        System.out.println(unicodeDecode("\\u63d0\\u4ea4\\u5931\\u8d25\\uff0c\\u007b\\u0030\\u007d\\u5df2\\u4e0b\\u67b6"));
+        System.out.println(unicodeEncode("提交失败，{0}已下架"));
 
         LocalDateTime localDateTime = LocalDateTimeUtil.of(new Date());
 //        LocalDateTime offset = LocalDateTimeUtil.offset(localDateTime, 30, ChronoUnit.MINUTES);

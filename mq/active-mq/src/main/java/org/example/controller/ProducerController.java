@@ -29,7 +29,7 @@ public class ProducerController {
     @ApiOperation("QUE")
     @GetMapping("/queue/test")
     public String sendQueue(@RequestParam("str") String str) {
-        jmsMessagingService.sendMessage(this.queue, str,4000);
+        jmsMessagingService.sendMessage(this.queue, str,10000);
         return "success";
     }
 

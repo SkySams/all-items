@@ -22,6 +22,8 @@
         <module>nacose-discovery-test</module>
         <module>knife4j</module>
         <module>seata</module>
+        <module>api-gateway</module>
+        <module>dubbo-samples</module>
     </modules>
 
     <properties>
