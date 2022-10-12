@@ -1,6 +1,8 @@
 package org.example.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.example.entity.Product;
 import org.springframework.stereotype.Repository;
 
@@ -19,5 +21,7 @@ public interface ProductDao extends BaseMapper<Product> {
      * @return
      */
     int insertBatchSomeColumn(List<Product> entityList);
+
+    Page<Product> page(IPage<Product> iPage);
 
 }
