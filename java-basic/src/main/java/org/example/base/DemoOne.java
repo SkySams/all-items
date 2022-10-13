@@ -12,6 +12,12 @@ public class DemoOne {
 
     public static void main(String[] args) {
 
+        String goodsPromotionType = "";
+        goodsPromotionType = goodsPromotionType.replace("5","");
+        goodsPromotionType = goodsPromotionType.replace("6","");
+        goodsPromotionType = goodsPromotionType.replace("7","");
+        System.out.println(goodsPromotionType);
+
 //        Calendar calendar = Calendar.getInstance();
 //        // 时
 //        calendar.set(Calendar.HOUR_OF_DAY, 0);
