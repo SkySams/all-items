@@ -1,0 +1,1 @@
+使用Java内置的观察者工具(Subject observerble)
