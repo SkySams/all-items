@@ -9,6 +9,6 @@ public interface Subject {
 
     void removeObserver(Observer observer);
 
-    void notifyObsever(Observer observer);
+    void notifyObsever();
 
 }

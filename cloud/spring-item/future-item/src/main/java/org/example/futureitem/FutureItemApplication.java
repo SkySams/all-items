@@ -19,7 +19,7 @@ public class FutureItemApplication {
         String userName = configurableEnvironment.getProperty("user.name");
         String userAge  = configurableEnvironment.getProperty("user.age");
         //Get the current deployment environment
-        String currentEnv = applicationContext.getEnvironment().getProperty("current.env");
+        String currentEnv = applicationContext.getEnvironment().getProperty("dev");
         System.err.println("in "+currentEnv+" enviroment; "+"user name :" + userName + "; age: " + userAge);
     }
 

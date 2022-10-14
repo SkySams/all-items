@@ -24,4 +24,6 @@ Dynamic Naming and Configuration Service的首字母简称: nacos
 [nacos 生态图](https://cdn.nlark.com/lark/0/2018/png/11189/1533045871534-e64b8031-008c-4dfc-b6e8-12a597a003fb.png)
 
 
+* dataId，必须指定，名称为应用名称+配置文件扩展名
+
 

@@ -12,8 +12,9 @@ spring:
         namespace:
         server-addr: ${spring.cloud.nacos.discovery.server-addr}
         group: DEFAULT_GROUP
-        file-extension: properties
+#        file-extension: properties
         name: ${spring.application.name}
         username: ${spring.cloud.nacos.discovery.username}
         password: ${spring.cloud.nacos.discovery.password}
         timeout: 3000
+        file-extension: yaml

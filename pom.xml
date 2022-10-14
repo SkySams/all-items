@@ -25,6 +25,7 @@
         <module>api-gateway</module>
         <module>dubbo-samples</module>
         <module>nacos-samples</module>
+        <module>spring-cloud-alibaba</module>
     </modules>
 
     <properties>
