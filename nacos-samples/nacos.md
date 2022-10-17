@@ -28,4 +28,6 @@ Dynamic Naming and Configuration Service的首字母简称: nacos
 
 [nacos-context](https://github.com/nacos-group/nacos-spring-project)
 
+[微服务练习项目](https://github.com/search?o=desc&q=dubbo%2Bnacos&s=stars&type=Repositories)
+
 
