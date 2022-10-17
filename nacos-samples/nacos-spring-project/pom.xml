@@ -3,19 +3,24 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>all-items</artifactId>
+        <artifactId>nacos-samples</artifactId>
         <groupId>org.example</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>nacos-samples</artifactId>
+    <artifactId>nacos-spring-project</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>nacos-spring-boot</module>
-        <module>nacos-spring</module>
-        <module>nacos-spring-project</module>
+        <module>nacos-spring-context</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-spring-context</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+    </dependencies>
 
 </project>

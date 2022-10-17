@@ -37,6 +37,12 @@
             <artifactId>nacos-config-spring-boot-actuator</artifactId>
             <version>${nacos-config-spring-boot.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>
