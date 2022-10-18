@@ -86,8 +86,8 @@ public class Demos {
         System.out.println(System.currentTimeMillis());
         System.out.println(new Date().getTime());
 //        test(); [{0}]
-        System.out.println(unicodeDecode("\\u63d0\\u4ea4\\u5931\\u8d25\\uff0c\\u007b\\u0030\\u007d\\u5df2\\u4e0b\\u67b6"));
-        System.out.println(unicodeEncode("提交失败，{0}已下架"));
+        System.out.println(unicodeDecode("\\u91cd\\u590d\\u5ba1\\u6838"));
+        System.out.println(unicodeEncode("重复审核"));
 
         LocalDateTime localDateTime = LocalDateTimeUtil.of(new Date());
 //        LocalDateTime offset = LocalDateTimeUtil.offset(localDateTime, 30, ChronoUnit.MINUTES);

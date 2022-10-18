@@ -1,10 +1,12 @@
 package org.example.reflex;
 
+import java.io.Serializable;
+
 /**
  * @author: zyh
  * @date: 2022/6/9
  */
-public class Student {
+public class Student implements Serializable {
     //---------------构造方法-------------------
     Student(String str) {
         System.out.println("(默认)的构造方法 s = " + str);
