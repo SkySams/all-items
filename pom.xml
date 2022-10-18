@@ -26,6 +26,7 @@
         <module>dubbo-samples</module>
         <module>nacos-samples</module>
         <module>spring-cloud-alibaba</module>
+        <module>nacos-java-sdk</module>
     </modules>
 
     <properties>
