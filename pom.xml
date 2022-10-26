@@ -27,6 +27,7 @@
         <module>nacos-samples</module>
         <module>spring-cloud-alibaba</module>
         <module>nacos-java-sdk</module>
+        <module>xxl-job-master</module>
     </modules>
 
     <properties>
