@@ -15,7 +15,7 @@ public class Bubble {
      * 冒泡排序：上了100W的数据排序直接崩溃
      */
 
-    static int MAX = 1000000;
+    static int MAX = 10000;
 
     @Test
     public void BubbleTest(){
@@ -27,14 +27,14 @@ public class Bubble {
             int n  = random.nextInt(MAX);
             num[i] = n;
         }
-        System.out.println(DateUtil.now());
-        List list = Arrays.asList(num);
-        list.sort(Comparator.naturalOrder());
-        System.out.println(DateUtil.now());
+//        System.out.println(DateUtil.now());
+//        List list = Arrays.asList(num);
+//        list.sort(Comparator.naturalOrder());
+//        System.out.println(DateUtil.now());
 
-
         System.out.println(DateUtil.now());
-        selectSort(num);
+        Integer[] kon = {23,12,32,1,2,24};
+        insertSort(num);
         System.out.println(DateUtil.now());
 //        System.out.println(list);
         for (Integer n:num){
@@ -121,5 +121,22 @@ public class Bubble {
             }
         }
     }
+
+    //插入排序
+    public static void insertSort(Integer[] num){
+        for (int i =0; i< num.length; i++){
+            for (int j = 0; j < i; j++){
+                if (num[i] < num[j]){
+                    int tem = num[i];
+                    num[i] = num[j];
+                    num[j] = tem;
+                }
+            }
+
+        }
+
+    }
+
+    // 希尔排序
 
 }
