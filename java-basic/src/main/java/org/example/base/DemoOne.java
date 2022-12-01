@@ -1,5 +1,6 @@
 package org.example.base;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,6 +14,26 @@ import java.util.*;
  * @date: 2022/10/10
  */
 public class DemoOne {
+
+
+    @Test
+    public void strng(){
+//        StringBuilder type = new StringBuilder();
+//        System.out.println(StrUtil.isBlank(type.toString()));
+
+//        System.out.println(Runtime.getRuntime().availableProcessors());
+
+        List<String> st = Arrays.asList("a","f");
+       Iterator ier = st.iterator();
+       if (ier.hasNext()){
+           System.out.println(ier.next());
+           while (ier.hasNext()){
+               System.out.println(ier.next());
+           }
+       }
+
+    }
+
 
     @Test
     public void main() {
