@@ -167,21 +167,4 @@ public class TestReflex {
 }
 
 
-class User {
-    public User() {
-    }
 
-    public User(Integer num) {
-        this.num = num;
-    }
-
-    private Integer num;
-
-    public Integer getNum() {
-        return num;
-    }
-
-    public void setNum(Integer num) {
-        this.num = num;
-    }
-}

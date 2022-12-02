@@ -1,5 +1,7 @@
 # build  Elasticsearch/Logstash/Kibana
 [版本文版]https://www.elastic.co/guide/en/elasticsearch/reference/6.0/_basic_concepts.html
+>https://www.elastic.co/guide/en/elasticsearch/reference/7.17/getting-started.html
+
 
 [客户端链接]https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.14/java-rest-high.html
 
@@ -120,6 +122,7 @@ histogram
 
 text
 > 文本族，包含text和match_only_text。分析的非结构化文本
+> 
 
 annotated_text
 > 包含特殊标记的文本。用于识别命名实体
@@ -467,7 +470,7 @@ GET /bank/_search
 * 
 
 PUT /employee
-{
+>{
     "mappings": {
         "properties": {
             "id": {"type": "integer"},

@@ -1,15 +1,12 @@
 package org.example.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.example.Esdao.ProductRepository;
 import org.example.entity.Product;
 import org.example.entity.dto.ProductDto;
 import org.example.service.ProductService;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,12 +55,12 @@ public class HttpEntityController {
     public Page<Product> pageProduct(){
         return productService.page();
     }
-
-    @ApiOperation("分页DTO")
-    @GetMapping
-    public PageDTO<ProductDto> pageDTO(int current, int size){
-        return productService.pageDto(current,size);
-    }
+//
+//    @ApiOperation("分页DTO")
+//    @GetMapping
+//    public PageDTO<ProductDto> pageDTO(int current, int size){
+//        return productService.pageDto(current,size);
+//    }
 
 
 }

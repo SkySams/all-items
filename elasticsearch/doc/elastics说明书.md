@@ -15,3 +15,12 @@ elastic 设置账号密码
 
 查看keystore列表：
 >kibana-keystore list
+
+证书过期：
+>降低基础版本： curl -XPOST http://127.0.0.1:9200/_license/start_basic?acknowledge=true
+
+许可证：
+>http://127.0.0.1:9200/_license
+
+中文文档：
+>https://learnku.com/docs/elasticsearch73/7.3

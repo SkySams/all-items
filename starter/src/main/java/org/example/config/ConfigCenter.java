@@ -1,15 +1,9 @@
 package org.example.config;
 
-import org.example.thread.CoffeeMakingTask;
-import org.example.thread.PotatoPeelingTask;
-import org.example.thread.Task;
-import org.example.thread.Worker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**

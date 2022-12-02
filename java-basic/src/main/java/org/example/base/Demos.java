@@ -83,11 +83,9 @@ public class Demos {
     public static void main(String[] args) {
         s();
 
-        System.out.println(System.currentTimeMillis());
-        System.out.println(new Date().getTime());
 //        test(); [{0}]
-        System.out.println(unicodeDecode("\\u91cd\\u590d\\u5ba1\\u6838"));
-        System.out.println(unicodeEncode("重复审核"));
+        System.out.println(unicodeDecode("\\u91cd\\u590d\\u63a8\\u8350"));
+        System.out.println(unicodeEncode("重复推荐"));
 
         LocalDateTime localDateTime = LocalDateTimeUtil.of(new Date());
 //        LocalDateTime offset = LocalDateTimeUtil.offset(localDateTime, 30, ChronoUnit.MINUTES);

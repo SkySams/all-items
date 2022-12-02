@@ -28,6 +28,7 @@
         <module>spring-cloud-alibaba</module>
         <module>nacos-java-sdk</module>
         <module>xxl-job-master</module>
+        <module>module</module>
     </modules>
 
     <properties>
