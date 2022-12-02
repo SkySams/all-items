@@ -122,6 +122,7 @@ histogram
 
 text
 > 文本族，包含text和match_only_text。分析的非结构化文本
+> 
 
 annotated_text
 > 包含特殊标记的文本。用于识别命名实体
