@@ -5,6 +5,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.elasticsearch.action.delete.DeleteRequest;
+import org.elasticsearch.action.delete.DeleteResponse;
+import org.elasticsearch.action.get.GetRequest;
+import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.update.UpdateRequest;
@@ -67,6 +71,32 @@ public class StudentController {
         System.out.println("_index:" + response.getIndex());
         System.out.println("_id:" + response.getId());
         System.out.println("_result:" + response.getResult());
+        return response;
+    }
+
+    @ApiOperation("查看文档")
+    @GetMapping ("/{index}/{id}")
+    @ApiImplicitParams({
+            @ApiImplicitParam(value = "索引名称", name = "index"),
+            @ApiImplicitParam(value = "唯一性标识", name = "id")
+    })
+    public GetResponse getDoc(@PathVariable("index") String index,@PathVariable("id") String id) throws Exception {
+        //1.创建请求对象
+        GetRequest request = new GetRequest().index(index).id(id);
+        GetResponse response = client.get(request, RequestOptions.DEFAULT);
+        return response;
+    }
+
+    @ApiOperation("删除文档")
+    @DeleteMapping ("/{index}/{id}")
+    @ApiImplicitParams({
+            @ApiImplicitParam(value = "索引名称", name = "index"),
+            @ApiImplicitParam(value = "唯一性标识", name = "id")
+    })
+    public DeleteResponse deletedDoc(@PathVariable("index") String index,@PathVariable("id") String id) throws Exception {
+        //1.创建请求对象
+        DeleteRequest request = new DeleteRequest().index(index).id(id);
+        DeleteResponse response = client.delete(request, RequestOptions.DEFAULT);
         return response;
     }
 
