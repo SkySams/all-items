@@ -40,4 +40,16 @@ public class JwtTest {
 //
 //    }
 
+    public static void main(String[] args) {
+        System.out.println(inss("helloworldsadweq",'&',3));
+    }
+
+    public static String inss(String ors,char ins,int count) {
+        String regex = "(.{"+count+"})";
+        ors = ors.replaceAll(regex, "$1"+ins);
+        ors = ors.charAt(ors.length()-1)==ins ? ors.substring(0,ors.length()-1) : ors;
+        return ors;
+    }
+
+
 }
