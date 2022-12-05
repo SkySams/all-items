@@ -23,4 +23,4 @@ elastic 设置账号密码
 >http://127.0.0.1:9200/_license
 
 中文文档：
->https://learnku.com/docs/elasticsearch73/7.3
+>https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html
