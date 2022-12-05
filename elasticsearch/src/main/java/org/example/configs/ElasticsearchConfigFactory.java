@@ -32,14 +32,20 @@ public class ElasticsearchConfigFactory {
      ERROR: Kibana keystore not found. Use 'create' command to create one.
 
 
-
-
      更改密码
      https://www.cnblogs.com/wwjj4811/p/14700279.html
 
      curl -H "Content-Type:application/json" -XPOST -u elastic 'http://127.0.0.1:9200/_xpack/security/user/elastic/_password'
      -d '{ "password" : "123456" }'
+
+     ElasticsearchRestTemplate 是 spring-data-elasticsearch 项目中的一个类，和其他 spring 项目中的 template类似。
+     在新版的 spring-data-elasticsearch 中，ElasticsearchRestTemplate 代替了原来的 ElasticsearchTemplate。
+     原因是 ElasticsearchTemplate 基于 TransportClient，TransportClient 即将在 8.x 以后的版本中移除。所以，我们推荐使用 ElasticsearchRestTemplate。
+     ElasticsearchRestTemplate 基 于 RestHighLevelClient 客户端的。需要自定义配置类，继承AbstractElasticsearchConfiguration，
+     并实现 elasticsearchClient()抽象方法，创建 RestHighLevelClient 对象。
      */
+
+
 
     @Value("${spring.data.elasticsearch.client.reactive.username}")
     private String username;
@@ -58,4 +64,7 @@ public class ElasticsearchConfigFactory {
                 .build();
         return RestClients.create(clientConfiguration).rest();
     }
+
+
+
 }
