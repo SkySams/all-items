@@ -17,6 +17,7 @@ import org.example.entity.Product;
 import org.springframework.data.domain.*;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+import org.springframework.data.geo.GeoPage;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -130,7 +131,7 @@ public class EmployeeController {
 
 
     /**
-     * 分页
+     * 分页: 从0开始
      */
     @ApiOperation("分页")
     @RequestMapping(value = "/findPage", method = RequestMethod.GET)
@@ -150,7 +151,6 @@ public class EmployeeController {
     @ApiOperation("分页有排序")
     @RequestMapping(value = "/findPage/sort", method = RequestMethod.GET)
     public Page<Employee> findPage(@RequestParam int page, @RequestParam int size, @RequestParam(required = false) String sort) {
-        Product product = productDao.selectById(1);
         Page<Employee> pages = employeeRepository.findAll(PageRequest.of(page, size, Sort.by(sort)));
         return pages;
     }
