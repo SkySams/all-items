@@ -175,7 +175,7 @@ public class SeniorController {
         //.创建查询请求体构建器
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
         //构建查询方式：高亮查询
-        TermsQueryBuilder termsQueryBuilder = QueryBuilders.termsQuery("name","sky");
+        TermsQueryBuilder termsQueryBuilder = QueryBuilders.termsQuery("lastName",map.get("name"));
         //设置查询方式
         sourceBuilder.query(termsQueryBuilder);
 
