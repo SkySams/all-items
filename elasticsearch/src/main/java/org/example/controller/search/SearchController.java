@@ -148,5 +148,17 @@ public class SearchController {
         return response;
     }
 
+    @ApiOperation(value = "SEARCH-SUGGESIONS-API")
+    @PostMapping("/suggestions/{index}")
+    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParams({
+            @ApiImplicitParam(value = "索引", name = "index"),
+            @ApiImplicitParam(value = "字段", name = "field"),
+            @ApiImplicitParam(value = "值", name = "value"),
+    })
+    public SearchResponse searchSuggestions(@PathVariable String index,@RequestParam String field,@RequestParam String value) throws Exception {
+
+        return null;
+    }
 
 }
