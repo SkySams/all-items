@@ -4,8 +4,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.lucene.search.TotalHits;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.search.ShardSearchFailure;
 import org.elasticsearch.action.support.IndicesOptions;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
@@ -13,6 +15,9 @@ import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.rest.RestStatus;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
@@ -20,9 +25,13 @@ import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.sort.FieldSortBuilder;
 import org.elasticsearch.search.sort.ScoreSortBuilder;
 import org.elasticsearch.search.sort.SortOrder;
+import org.elasticsearch.search.suggest.SuggestBuilder;
+import org.elasticsearch.search.suggest.SuggestBuilders;
+import org.elasticsearch.search.suggest.SuggestionBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -40,9 +49,6 @@ public class SearchController {
     @ApiOperation(value = "SEARCH-API")
     @PostMapping("/{index}")
     @ApiImplicitParam(value = "索引名称", name = "index")
-    @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index")
-    })
     public SearchResponse searchApi(@PathVariable String index) throws Exception {
         SearchRequest request = new SearchRequest(index);
         request.indicesOptions(IndicesOptions.lenientExpandOpen());
@@ -50,14 +56,14 @@ public class SearchController {
         searchSourceBuilder.query(QueryBuilders.matchAllQuery());
         request.source(searchSourceBuilder);
         SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+        this.getSearchResponse(response);
         return response;
     }
 
     @ApiOperation(value = "SEARCH-PAGE-API")
     @PostMapping("/page/{index}/{from}/{size}/{duration}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
+            @ApiImplicitParam(value = "索引名称", name = "index"),
             @ApiImplicitParam(value = "当前页", name = "from"),
             @ApiImplicitParam(value = "大小", name = "size"),
             @ApiImplicitParam(value = "期间", name = "duration"),
@@ -84,9 +90,8 @@ public class SearchController {
 
     @ApiOperation(value = "SEARCH-HIGH-API")
     @PostMapping("/page/highlight/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
+            @ApiImplicitParam(value = "索引名称", name = "index"),
             @ApiImplicitParam(value = "key", name = "key")
     })
     public SearchResponse searchHighlight(@PathVariable String index, @RequestParam String key) throws Exception {
@@ -107,9 +112,6 @@ public class SearchController {
     @ApiOperation(value = "SEARCH-AGGREGATION-API")
     @PostMapping("/aggregations/{index}")
     @ApiImplicitParam(value = "索引名称", name = "index")
-    @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index")
-    })
     public SearchResponse searchAggregations(@PathVariable String index) throws Exception {
         SearchRequest request = new SearchRequest(index);
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
@@ -125,9 +127,8 @@ public class SearchController {
 
     @ApiOperation(value = "SEARCH-BUILDING-API")
     @PostMapping("/builder/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
+            @ApiImplicitParam(value = "索引名称", name = "index"),
             @ApiImplicitParam(value = "字段", name = "field"),
             @ApiImplicitParam(value = "值", name = "value"),
     })
@@ -150,15 +151,82 @@ public class SearchController {
 
     @ApiOperation(value = "SEARCH-SUGGESIONS-API")
     @PostMapping("/suggestions/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
+            @ApiImplicitParam(value = "索引名称", name = "index"),
             @ApiImplicitParam(value = "字段", name = "field"),
             @ApiImplicitParam(value = "值", name = "value"),
     })
     public SearchResponse searchSuggestions(@PathVariable String index,@RequestParam String field,@RequestParam String value) throws Exception {
+        SearchRequest request = new SearchRequest(index);
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        SuggestionBuilder  termSuggestionBuilder = SuggestBuilders.termSuggestion(field).text(value);
+        SuggestBuilder suggestBuilder = new SuggestBuilder();
+        suggestBuilder.addSuggestion("suggest_user",termSuggestionBuilder);
+        searchSourceBuilder.suggest(suggestBuilder);
+        searchSourceBuilder.profile(true);
+        request.source(searchSourceBuilder);
+        SearchResponse searchResponse = client.search(request, RequestOptions.DEFAULT);
+        return searchResponse;
+    }
 
-        return null;
+    private void getSearchResponse(SearchResponse searchResponse){
+        RestStatus status = searchResponse.status();
+        TimeValue took = searchResponse.getTook();
+        Boolean terminatedEarly = searchResponse.isTerminatedEarly();
+        boolean timedOut = searchResponse.isTimedOut();
+        System.out.println(status);
+        System.out.println(took);
+        System.out.println(terminatedEarly);
+        System.out.println(timedOut);
+
+        int totalShards = searchResponse.getTotalShards();
+        int successfulShards = searchResponse.getSuccessfulShards();
+        int failedShards = searchResponse.getFailedShards();
+
+        System.out.println(totalShards);
+        System.out.println(successfulShards);
+        System.out.println(failedShards);
+
+        for (ShardSearchFailure failure : searchResponse.getShardFailures()) {
+            // failures should be handled here
+            System.out.println(failure.index());
+        }
+
+        SearchHits hits = searchResponse.getHits();
+
+        TotalHits totalHits = hits.getTotalHits();
+
+        long numHits = totalHits.value;
+        System.out.println(numHits);
+        TotalHits.Relation relation = totalHits.relation;
+        float maxScore = hits.getMaxScore();
+
+        SearchHit[] searchHits = hits.getHits();
+        for (SearchHit hit : searchHits) {
+            String index = hit.getIndex();
+            String id = hit.getId();
+            float score = hit.getScore();
+
+            System.out.println(index);
+            System.out.println(id);
+            System.out.println(score);
+
+            String sourceAsString = hit.getSourceAsString();
+            System.out.println(sourceAsString);
+
+            Map<String, Object> sourceAsMap = hit.getSourceAsMap();
+            String documentTitle = (String) sourceAsMap.get("lastName");
+            System.out.println(documentTitle);
+
+        }
+
+//        Aggregations aggregations = searchResponse.getAggregations();
+//        Terms byCompanyAggregation = aggregations.get("by_company");
+//        Terms.Bucket elasticBucket = byCompanyAggregation.getBucketByKey("Elastic");
+//        Avg averageAge = elasticBucket.getAggregations().get("average_age");
+//        double avg = averageAge.getValue();
+//        System.out.println(avg);
+
     }
 
 }
