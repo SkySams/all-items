@@ -29,7 +29,7 @@ public class ExplainController {
 
     @ApiOperation(value = "SEARCH-EXPLAIN-API")
     @PostMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public ExplainResponse explain(@PathVariable String index, @RequestParam String id) throws Exception {
         ExplainRequest request = new ExplainRequest(index,id);
         request.query(QueryBuilders.matchAllQuery());

@@ -61,7 +61,7 @@ public class IndexTemplateController {
 
     @ApiOperation("索引模块")
     @PutMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public AcknowledgedResponse indexTemplaste(@PathVariable String index) throws Exception {
         PutIndexTemplateRequest request = new PutIndexTemplateRequest(index);
         request.patterns(Arrays.asList("pattern-1", "log-*"));
@@ -75,7 +75,7 @@ public class IndexTemplateController {
 
     @ApiOperation("获取索引模块")
     @GetMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public GetIndexTemplatesResponse getIndexTemplate(@PathVariable String index) throws Exception {
         GetIndexTemplatesRequest request = new GetIndexTemplatesRequest(index);
 //        GetIndexTemplatesRequest request = new GetIndexTemplatesRequest("template-1", "template-2");
@@ -86,7 +86,7 @@ public class IndexTemplateController {
 
     @ApiOperation("检验索引模块")
     @GetMapping("/exists/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public boolean existsIndexTemplate(@PathVariable String index) throws Exception {
         IndexTemplatesExistRequest request;
         request = new IndexTemplatesExistRequest(index);
@@ -102,7 +102,7 @@ public class IndexTemplateController {
 
     @ApiOperation("删除")
     @DeleteMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public AcknowledgedResponse delete(@PathVariable String index) throws Exception {
         DeleteIndexTemplateRequest request = new DeleteIndexTemplateRequest();
         request.name(index);

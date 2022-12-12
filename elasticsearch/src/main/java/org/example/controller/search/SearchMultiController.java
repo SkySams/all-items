@@ -30,10 +30,10 @@ public class SearchMultiController {
     @ApiOperation(value = "SEARCH-MULTI-API（多值查询）")
     @PostMapping("/{index}/{size}")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引名称", name = "index"),
-            @ApiImplicitParam(value = "大小", name = "size"),
-            @ApiImplicitParam(value = "字段", name = "field"),
-            @ApiImplicitParam(value = "值", name = "value"),
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "大小", name = "size",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "字段", name = "field",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "值", name = "value",dataTypeClass = String.class),
     })
     public MultiSearchResponse searchApi(@PathVariable String index, @PathVariable int size, @RequestParam String field, @RequestParam String value) throws Exception {
         MultiSearchRequest multiSearchRequest = new MultiSearchRequest();

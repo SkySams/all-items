@@ -41,10 +41,9 @@ public class PostsController {
 
     @ApiOperation(value = "创建文本", notes = "没有索引创建,ES会自动创建，类型es7以上没有自定义类型，只有_doc类型")
     @PutMapping("/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id",dataTypeClass = String.class)
     })
     public IndexResponse createIndexPosts(@PathVariable String index, @PathVariable("id") String id) throws Exception {
         IndexRequest request = new IndexRequest(index);
@@ -61,10 +60,9 @@ public class PostsController {
 
     @ApiOperation(value = "创建文本MAP", notes = "没有索引创建,ES会自动创建，类型es7以上没有自定义类型，只有_doc类型")
     @PutMapping("/map/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id",dataTypeClass = String.class)
     })
     public IndexResponse createIndexMap(@PathVariable String index, @PathVariable("id") String id, @RequestBody Map map) throws Exception {
         IndexRequest request = new IndexRequest(index).id(id);
@@ -75,10 +73,9 @@ public class PostsController {
 
     @ApiOperation(value = "创建文本MAP", notes = "没有索引创建,ES会自动创建，类型es7以上没有自定义类型，只有_doc类型")
     @PutMapping("/map/low/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id",dataTypeClass = String.class)
     })
     public IndexResponse createIndexMapLow(@PathVariable String index, @PathVariable("id") String id) throws Exception {
 
@@ -94,10 +91,9 @@ public class PostsController {
 
     @ApiOperation(value = "创建文本(类型3)", notes = "没有索引创建,ES会自动创建，类型es7以上没有自定义类型，只有_doc类型")
     @PutMapping("/builder/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id",dataTypeClass = String.class)
     })
     public IndexResponse createXContentBuilder(@PathVariable String index, @PathVariable("id") String id) throws Exception {
         XContentBuilder builder = XContentFactory.jsonBuilder();
@@ -115,10 +111,9 @@ public class PostsController {
 
     @ApiOperation(value = "创建文本(类型4)", notes = "没有索引创建,ES会自动创建，类型es7以上没有自定义类型，只有_doc类型")
     @PutMapping("/type4/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id",dataTypeClass = String.class)
     })
     public IndexResponse createType4(@PathVariable String index, @PathVariable("id") String id) throws Exception {
         IndexRequest request = new IndexRequest(index).id(id).source("name","Jack","postsDate",new Date(),
@@ -148,10 +143,9 @@ public class PostsController {
 
     @ApiOperation(value = "创建文本(类型5)", notes = "没有索引创建,ES会自动创建，类型es7以上没有自定义类型，只有_doc类型")
     @PutMapping("/type5/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id",dataTypeClass = String.class)
     })
     public IndexResponse createType5(@PathVariable String index, @PathVariable("id") String id)throws IOException{
         IndexRequest request = new IndexRequest(index).id(id).source("field","value")
@@ -169,10 +163,9 @@ public class PostsController {
 
     @ApiOperation(value = "创建文本(类型6)", notes = "没有索引创建,ES会自动创建，类型es7以上没有自定义类型，只有_doc类型")
     @PutMapping("/type6/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id",dataTypeClass = String.class)
     })
     public IndexResponse createType6(@PathVariable String index, @PathVariable("id") String id)throws IOException{
         IndexRequest request = new IndexRequest(index).id(id).source("field","value")

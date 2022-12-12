@@ -31,7 +31,7 @@ public class RankingController {
 
     @ApiOperation(value = "SEARCH-TEMPLATE-API")
     @PostMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public RankEvalResponse searchRanking(@PathVariable String index, @RequestParam String field, @RequestParam String value) throws Exception {
         EvaluationMetric metric = new PrecisionAtK();
         List<RatedDocument> ratedDocs = new ArrayList<>();

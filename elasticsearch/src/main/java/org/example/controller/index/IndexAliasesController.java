@@ -27,7 +27,7 @@ public class IndexAliasesController {
 
     @ApiOperation("索引别名")
     @PutMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public AcknowledgedResponse indexAliases(@PathVariable String index, @RequestParam String aliaseName) throws Exception {
         IndicesAliasesRequest request = new IndicesAliasesRequest();
         IndicesAliasesRequest.AliasActions aliasAction = new IndicesAliasesRequest.AliasActions(IndicesAliasesRequest.AliasActions.Type.ADD)
@@ -40,7 +40,7 @@ public class IndexAliasesController {
 
     @ApiOperation("获取别名")
     @GetMapping("/{aliaseName}")
-    @ApiImplicitParam(value = "索引别名", name = "aliaseName")
+    @ApiImplicitParam(value = "索引别名", name = "aliaseName",dataTypeClass = String.class)
     public GetAliasesResponse getAliases(@PathVariable String aliaseName) throws Exception {
 //        GetAliasesRequest request = new GetAliasesRequest();
 //        GetAliasesRequest requestWithAliases = new GetAliasesRequest(new String[]{"alias1", "alias2"});
@@ -52,7 +52,7 @@ public class IndexAliasesController {
 
     @ApiOperation("删除别名")
     @DeleteMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public org.elasticsearch.client.core.AcknowledgedResponse deletedAliases(@PathVariable String index, @RequestParam String aliaseName) throws Exception {
         DeleteAliasRequest request = new DeleteAliasRequest(index, aliaseName);
         org.elasticsearch.client.core.AcknowledgedResponse deleteAliasResponse = client.indices().deleteAlias(request, RequestOptions.DEFAULT);
@@ -61,7 +61,7 @@ public class IndexAliasesController {
 
     @ApiOperation("索引别名")
     @GetMapping("/exists/{aliaseName}")
-    @ApiImplicitParam(value = "索引别名", name = "aliaseName")
+    @ApiImplicitParam(value = "索引别名", name = "aliaseName",dataTypeClass = String.class)
     public boolean exists(@PathVariable String aliaseName) throws Exception {
         GetAliasesRequest request = new GetAliasesRequest(aliaseName);
 //        GetAliasesRequest request = new GetAliasesRequest();

@@ -36,7 +36,7 @@ public class SeniorController {
 
     @ApiOperation("高级搜索")
     @PostMapping("{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchResponse senior(@PathVariable("index") String index, @RequestBody Map map) throws Exception{
         SearchRequest request = new SearchRequest();
         request.indices(index);
@@ -53,7 +53,7 @@ public class SeniorController {
 
     @ApiOperation(value = "term查询",notes = "term 查询，查询条件为关键字")
     @PostMapping("term/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchResponse searchTerm(@PathVariable("index") String index, @RequestBody Map map) throws Exception{
         //创建搜索请求对象
         SearchRequest request = new SearchRequest(index);
@@ -66,7 +66,7 @@ public class SeniorController {
     }
     @ApiOperation(value = "分页",notes = "分页查询")
     @PostMapping("page/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchResponse searchPage(@PathVariable("index") String index, @RequestBody Map map, @RequestParam Integer current,@RequestParam Integer size) throws Exception{
         SearchRequest request = new SearchRequest(index);
         SearchSourceBuilder builder = new SearchSourceBuilder();
@@ -82,7 +82,7 @@ public class SeniorController {
 
     @ApiOperation(value = "数据排序",notes = "数据排序")
     @PostMapping("page/orderby/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchResponse searchPageOrderBy(@PathVariable("index") String index, @RequestBody Map map) throws Exception{
         SearchRequest request = new SearchRequest(index);
         SearchSourceBuilder builder = new SearchSourceBuilder();
@@ -96,7 +96,7 @@ public class SeniorController {
 
     @ApiOperation(value = "过滤字段",notes = "过滤字段")
     @PostMapping("page/filter/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchResponse searchFilter(@PathVariable("index") String index, @RequestBody Map map) throws Exception{
         SearchRequest request = new SearchRequest(index);
         SearchSourceBuilder builder = new SearchSourceBuilder();
@@ -114,7 +114,7 @@ public class SeniorController {
 
     @ApiOperation(value = "Bool查询",notes = "Bool查询")
     @PostMapping("page/bool/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchResponse searchBool(@PathVariable("index") String index, @RequestBody Map map) throws Exception{
         SearchRequest request = new SearchRequest(index);
         // 构建查询的请求体
@@ -137,7 +137,7 @@ public class SeniorController {
 
     @ApiOperation(value = "范围查询",notes = "范围查询")
     @PostMapping("page/range/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchResponse searchRangeQuery(@PathVariable("index") String index, @RequestBody Map map) throws Exception{
         SearchRequest request = new SearchRequest(index);
 
@@ -156,7 +156,7 @@ public class SeniorController {
 
     @ApiOperation(value = "模糊查询",notes = "模糊查询")
     @PostMapping("page/fuzzy/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchResponse searchFuzzyQuery(@PathVariable("index") String index, @RequestBody Map map) throws Exception{
         SearchRequest request = new SearchRequest(index);
         // 构建查询的请求体
@@ -169,7 +169,7 @@ public class SeniorController {
 
     @ApiOperation(value = "高亮查询",notes = "高亮查询")
     @PostMapping("page/highlight/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchResponse searchHighlightBuilder (@PathVariable("index") String index, @RequestBody Map map) throws Exception{
         SearchRequest request = new SearchRequest().indices(index);
         //.创建查询请求体构建器
@@ -198,7 +198,7 @@ public class SeniorController {
 
     @ApiOperation(value = "聚合查询",notes = "聚合查询")
     @PostMapping("page/polymerization/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchResponse searchPolymerizationQuery (@PathVariable("index") String index, @RequestBody Map map) throws Exception{
         SearchRequest request = new SearchRequest(index);
         SearchSourceBuilder builder = new SearchSourceBuilder();
@@ -211,7 +211,7 @@ public class SeniorController {
 
     @ApiOperation(value = "组合查询",notes = "组合查询")
     @PostMapping("page/greoup/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchResponse searchGroup (@PathVariable("index") String index, @RequestBody Map map) throws Exception{
         SearchRequest request = new SearchRequest(index);
         SearchSourceBuilder builder = new SearchSourceBuilder();

@@ -48,7 +48,7 @@ public class IndexAnalyzeController {
 
     @ApiOperation("重新加载分析器请求")
     @PutMapping("/reload/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public ReloadAnalyzersResponse indexSettings(@PathVariable String index) throws Exception {
         ReloadAnalyzersRequest request = new ReloadAnalyzersRequest(index);
         ReloadAnalyzersResponse reloadResponse = client.indices().reloadAnalyzers(request, RequestOptions.DEFAULT);

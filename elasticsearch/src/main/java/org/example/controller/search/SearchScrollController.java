@@ -32,10 +32,10 @@ public class SearchScrollController {
     @ApiOperation(value = "SEARCH-API")
     @PostMapping("/{index}/{size}")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引名称", name = "index"),
-            @ApiImplicitParam(value = "大小", name = "size"),
-            @ApiImplicitParam(value = "字段", name = "field"),
-            @ApiImplicitParam(value = "值", name = "value"),
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "大小", name = "size",dataTypeClass = Integer.class),
+            @ApiImplicitParam(value = "字段", name = "field",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "值", name = "value",dataTypeClass = String.class),
     })
     public SearchResponse searchApi(@PathVariable String index, @PathVariable int size,@RequestParam String field, @RequestParam String value) throws Exception {
         SearchRequest request = new SearchRequest(index);
@@ -53,11 +53,11 @@ public class SearchScrollController {
 
     @ApiOperation(value = "SEARCH-FULL-EXAMPLE-API")
     @PostMapping("/full/example/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "字段", name = "field"),
-            @ApiImplicitParam(value = "值", name = "value"),
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "字段", name = "field",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "值", name = "value",dataTypeClass = String.class),
     })
     public SearchResponse searchFullExample(@PathVariable String index,@RequestParam String field, @RequestParam String value) throws Exception {
         final Scroll scroll = new Scroll(TimeValue.timeValueMinutes(1L));

@@ -29,10 +29,9 @@ public class ExistsController {
 
     @ApiOperation(value = "检查API是否存在", notes = "")
     @PutMapping("/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id",dataTypeClass = String.class)
     })
     public boolean sourceType1(@PathVariable String index, @PathVariable("id") String id) throws Exception {
         GetRequest request = new GetRequest(index,id);

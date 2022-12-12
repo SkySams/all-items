@@ -32,7 +32,7 @@ public class IndecSettingsController {
 
     @ApiOperation("索引设置")
     @PutMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public AcknowledgedResponse indexSettings(@PathVariable String index) throws Exception {
         UpdateSettingsRequest request = new UpdateSettingsRequest(index);
 //        UpdateSettingsRequest requestMultiple = new UpdateSettingsRequest("index1", "index2");
@@ -52,7 +52,7 @@ public class IndecSettingsController {
     }
     @ApiOperation("索引设置")
     @GetMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public GetSettingsResponse getIndexSettings(@PathVariable String index) throws Exception {
         GetSettingsRequest request = new GetSettingsRequest().indices(index);
         GetSettingsResponse response = client.indices().getSettings(request, RequestOptions.DEFAULT);

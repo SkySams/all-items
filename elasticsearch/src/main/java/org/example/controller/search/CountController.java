@@ -28,7 +28,7 @@ public class CountController {
 
     @ApiOperation(value = "SEARCH-COUNT-API")
     @PostMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public CountResponse count(@PathVariable String index, @RequestParam String id) throws Exception {
         CountRequest countRequest = new CountRequest();
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();

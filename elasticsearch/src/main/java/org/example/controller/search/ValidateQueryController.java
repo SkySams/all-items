@@ -32,7 +32,7 @@ public class ValidateQueryController {
 
     @ApiOperation("验证QUERY")
     @PutMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public ValidateQueryResponse indexSettings(@PathVariable String index) throws Exception {
         ValidateQueryRequest request = new ValidateQueryRequest(index);
         QueryBuilder builder = QueryBuilders

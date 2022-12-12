@@ -48,7 +48,7 @@ public class ClusterController {
     private RestHighLevelClient client;
 
     @ApiOperation("设置集群")
-    @PutMapping("/{index}")
+    @PutMapping("")
     public ClusterUpdateSettingsResponse settingsCluster () throws Exception{
         ClusterUpdateSettingsRequest request = new ClusterUpdateSettingsRequest();
 
@@ -97,7 +97,7 @@ public class ClusterController {
 
     @ApiOperation("集群运行状况API")
     @GetMapping("/health/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public ClusterHealthResponse getClusterHealth (@PathVariable("index") String index) throws Exception{
         ClusterHealthRequest request = new ClusterHealthRequest(index);
         request.timeout(TimeValue.timeValueSeconds(50));
@@ -125,7 +125,7 @@ public class ClusterController {
 
     @ApiOperation("获取组件模板")
     @GetMapping("/component/template/{name}")
-    @ApiImplicitParam(value = "名称", name = "name")
+    @ApiImplicitParam(value = "名称", name = "name",dataTypeClass = String.class)
     public GetComponentTemplatesResponse getComponentTemplate (@PathVariable String name) throws Exception{
         GetComponentTemplatesRequest request = new GetComponentTemplatesRequest(name);
         request.setMasterNodeTimeout(TimeValue.timeValueMinutes(1));
@@ -135,7 +135,7 @@ public class ClusterController {
 
     @ApiOperation("更新组件模块")
     @PutMapping("/component/template/{name}")
-    @ApiImplicitParam(value = "名称", name = "name")
+    @ApiImplicitParam(value = "名称", name = "name",dataTypeClass = String.class)
     public AcknowledgedResponse updateComponentTemplate(@PathVariable String name) throws Exception{
         PutComponentTemplateRequest request = new PutComponentTemplateRequest().name(name);
         Settings settings = Settings.builder()
@@ -172,7 +172,7 @@ public class ClusterController {
 
     @ApiOperation("删除")
     @DeleteMapping ("/{name}")
-    @ApiImplicitParam(value = "名称", name = "name")
+    @ApiImplicitParam(value = "名称", name = "name",dataTypeClass = String.class)
     public AcknowledgedResponse deleted(@PathVariable String name) throws Exception{
         DeleteComposableIndexTemplateRequest request = new DeleteComposableIndexTemplateRequest(name);
         AcknowledgedResponse response = client.indices().deleteIndexTemplate(request, RequestOptions.DEFAULT);

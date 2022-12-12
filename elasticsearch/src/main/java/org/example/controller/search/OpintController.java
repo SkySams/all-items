@@ -29,7 +29,7 @@ public class OpintController {
 
     @ApiOperation(value = "SEARCH-OPINT-API",notes = "fail")
     @PostMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public CountResponse count(@PathVariable String index, @RequestParam String pitId) throws Exception {
         SearchRequest searchRequest = new SearchRequest();
         final PointInTimeBuilder pointInTimeBuilder = new PointInTimeBuilder(pitId);

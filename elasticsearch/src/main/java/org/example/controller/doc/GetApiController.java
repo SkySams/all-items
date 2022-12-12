@@ -36,10 +36,9 @@ public class GetApiController {
 
     @ApiOperation(value = "类型1")
     @PutMapping("/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id",dataTypeClass = String.class)
     })
     public GetResponse getApiType(@PathVariable String index, @PathVariable("id") String id) throws Exception {
         GetRequest request = new GetRequest(index, id);
@@ -54,10 +53,9 @@ public class GetApiController {
 
     @ApiOperation(value = "类型2")
     @PutMapping("/type1/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id", dataTypeClass = String.class)
     })
     public GetResponse getApiType1(@PathVariable String index, @PathVariable("id") String id) throws Exception {
         GetRequest request = new GetRequest(index, id);
@@ -84,10 +82,9 @@ public class GetApiController {
 
     @ApiOperation(value = "类型3")
     @PutMapping("/type3/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id",dataTypeClass = String.class)
     })
     public GetResponse getApiType3(@PathVariable String index, @PathVariable("id") String id) throws IOException {
         GetRequest request = new GetRequest(index,id);
@@ -104,11 +101,10 @@ public class GetApiController {
 
     @ApiOperation(value = "类型4")
     @PutMapping("/type4/{index}/{id}/{version}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id"),
-            @ApiImplicitParam(value = "版本", name = "version")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "版本", name = "version",dataTypeClass = String.class)
     })
     public GetResponse getApiType4(@PathVariable String index, @PathVariable("id") String id, @PathVariable("version") Long version) throws IOException {
         GetResponse getResponse = null;

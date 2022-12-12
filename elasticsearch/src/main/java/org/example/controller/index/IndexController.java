@@ -28,7 +28,7 @@ public class IndexController {
 
     @ApiOperation("创建索引")
     @PutMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public CreateIndexResponse create(@PathVariable String index) throws Exception {
         // 创建索引请求
         CreateIndexRequest request = new CreateIndexRequest(index);
@@ -40,7 +40,7 @@ public class IndexController {
 
     @ApiOperation("查看索引")
     @GetMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public Object viewIndex(@PathVariable("index") String index) throws Exception {
         GetIndexRequest request = new GetIndexRequest(index);
         GetIndexResponse response = restHighLevelClient.indices().get(request, RequestOptions.DEFAULT);
@@ -52,7 +52,7 @@ public class IndexController {
 
     @ApiOperation("删除索引")
     @DeleteMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public AcknowledgedResponse deleted(@PathVariable("index") String index) throws Exception {
         DeleteIndexRequest request = new DeleteIndexRequest(index);
         AcknowledgedResponse response = restHighLevelClient.indices().delete(request, RequestOptions.DEFAULT);

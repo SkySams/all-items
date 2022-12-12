@@ -34,7 +34,7 @@ public class SearchTemplateController {
 
     @ApiOperation(value = "SEARCH-TEMPLATE-API")
     @PostMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchTemplateResponse searchTemplateApi(@PathVariable String index, @RequestParam String field, @RequestParam String value) throws Exception {
         SearchTemplateRequest request = new SearchTemplateRequest();
         request.setRequest(new SearchRequest(index));
@@ -55,10 +55,7 @@ public class SearchTemplateController {
 
     @ApiOperation(value = "SEARCH-TEMPLATE-MULTI-API")
     @PostMapping("/multi/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
-    @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index")
-    })
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public MultiSearchTemplateResponse searchTemplateMultiApi(@PathVariable String index) throws Exception {
         String [] searchTerms = {"constantin", "cheyanne", "jonathon"};
         MultiSearchTemplateRequest multiRequest = new MultiSearchTemplateRequest();

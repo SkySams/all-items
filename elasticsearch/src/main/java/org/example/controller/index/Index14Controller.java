@@ -54,7 +54,7 @@ public class Index14Controller {
 
     @ApiOperation("创建索引json")
     @PutMapping("/json/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public CreateIndexResponse createJson(@PathVariable String index) throws Exception {
         CreateIndexRequest request = new CreateIndexRequest(index);
         // Index settings
@@ -80,7 +80,7 @@ public class Index14Controller {
 
     @ApiOperation("创建索引Map")
     @PutMapping("/map/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public CreateIndexResponse createMap(@PathVariable String index) throws Exception {
         CreateIndexRequest request = new CreateIndexRequest(index);
         Map<String, Object> message = new HashMap<>();
@@ -97,7 +97,7 @@ public class Index14Controller {
 
     @ApiOperation("创建索引XC")
     @PutMapping("/xc/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public CreateIndexResponse createXC(@PathVariable String index) throws Exception {
         CreateIndexRequest request = new CreateIndexRequest(index);
         XContentBuilder builder = XContentFactory.jsonBuilder();
@@ -124,7 +124,7 @@ public class Index14Controller {
 
     @ApiOperation("删除索引")
     @DeleteMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public AcknowledgedResponse deleted(@PathVariable String index) throws Exception {
         DeleteIndexRequest request = new DeleteIndexRequest(index);
         // 设置超时时间
@@ -140,7 +140,7 @@ public class Index14Controller {
 
     @ApiOperation(value = "检测索引",notes = "索引是否存在")
     @GetMapping("/exists/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public boolean exists (@PathVariable String index) throws Exception {
         GetIndexRequest request = new GetIndexRequest(index);
         request.local(false);
@@ -152,7 +152,7 @@ public class Index14Controller {
 
     @ApiOperation(value = "打开索引",notes = "打开索引")
     @PutMapping("/open/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public OpenIndexResponse open (@PathVariable String index) throws Exception {
         OpenIndexRequest request = new OpenIndexRequest(index);
         request.timeout(TimeValue.timeValueMinutes(2));
@@ -167,7 +167,7 @@ public class Index14Controller {
 
     @ApiOperation(value = "关闭索引",notes = "关闭索引")
     @PutMapping("/close/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public AcknowledgedResponse close (@PathVariable String index) throws Exception {
         CloseIndexRequest request = new CloseIndexRequest(index);
         request.setTimeout(TimeValue.timeValueMinutes(2));
@@ -181,8 +181,8 @@ public class Index14Controller {
     @ApiOperation(value = "更改索引名称",notes = "更改索引名称")
     @PutMapping("/shrink/{target_index}/{source_index}")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "目标索引名称", name = "target_index"),
-            @ApiImplicitParam(value = "源索引名称", name = "source_index")
+            @ApiImplicitParam(value = "目标索引名称", name = "target_index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "源索引名称", name = "source_index",dataTypeClass = String.class)
     })
     public ResizeResponse shrink (@PathVariable String target_index,@PathVariable String source_index) throws Exception {
         ResizeRequest request = new ResizeRequest(target_index,source_index);
@@ -193,7 +193,7 @@ public class Index14Controller {
 
     @ApiOperation(value = "刷新索引",notes = "刷新索引")
     @PutMapping("/refresh/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public RefreshResponse refresh (@PathVariable String index) throws Exception {
         RefreshRequest request = new RefreshRequest(index);
 //        RefreshRequest requestMultiple = new RefreshRequest("index1", "index2");
@@ -209,7 +209,7 @@ public class Index14Controller {
 
     @ApiOperation(value = "flush索引",notes = "flush索引")
     @PutMapping("/flush/synced/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SyncedFlushResponse flushSynced (@PathVariable String index) throws Exception {
         SyncedFlushRequest request = new SyncedFlushRequest(index);
 //        SyncedFlushRequest requestMultiple = new SyncedFlushRequest("index1", "index2");
@@ -240,7 +240,7 @@ public class Index14Controller {
 
     @ApiOperation(value = "清除缓存",notes = "清除缓存")
     @PutMapping("/clear/cache/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public ClearIndicesCacheResponse clearCache (@PathVariable String index) throws Exception {
         ClearIndicesCacheRequest request = new ClearIndicesCacheRequest(index);
 //        ClearIndicesCacheRequest requestMultiple = new ClearIndicesCacheRequest("index1", "index2");
@@ -256,7 +256,7 @@ public class Index14Controller {
 
     @ApiOperation(value = "强制合并",notes = "强制合并")
     @PutMapping("/force/merge/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public ForceMergeResponse forceMerge (@PathVariable String index) throws Exception {
         ForceMergeRequest request = new ForceMergeRequest("index1");
 //        ForceMergeRequest requestMultiple = new ForceMergeRequest("index1", "index2");
@@ -272,7 +272,7 @@ public class Index14Controller {
 
     @ApiOperation(value = "Rollover",notes = "Rollover")
     @PutMapping("/rollover/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public RolloverResponse rollover (@PathVariable String index) throws Exception {
         RolloverRequest request = new RolloverRequest("alias", "index-2");
         request.addMaxIndexAgeCondition(new TimeValue(7, TimeUnit.DAYS));

@@ -36,8 +36,8 @@ public class StudentController {
     @ApiOperation(value = "创建数据",notes = "创建数据，添加到文档中")
     @PostMapping("/{index}/{id}")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引名称", name = "index"),
-            @ApiImplicitParam(value = "唯一性标识", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "唯一性标识", name = "id",dataTypeClass = String.class)
     })
     public IndexResponse createDoc(@PathVariable("index") String index,@PathVariable("id") String id,@RequestBody Student student) throws Exception {
         IndexRequest request = new IndexRequest();
@@ -57,8 +57,8 @@ public class StudentController {
     @ApiOperation("修改文档")
     @PutMapping ("/{index}/{id}")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引名称", name = "index"),
-            @ApiImplicitParam(value = "唯一性标识", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "唯一性标识", name = "id", dataTypeClass = String.class)
     })
     public UpdateResponse updateDoc(@PathVariable("index") String index,@PathVariable("id") String id,@RequestBody Student student) throws Exception {
         UpdateRequest request = new UpdateRequest();
@@ -77,8 +77,8 @@ public class StudentController {
     @ApiOperation("查看文档")
     @GetMapping ("/{index}/{id}")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引名称", name = "index"),
-            @ApiImplicitParam(value = "唯一性标识", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "唯一性标识", name = "id", dataTypeClass = String.class)
     })
     public GetResponse getDoc(@PathVariable("index") String index,@PathVariable("id") String id) throws Exception {
         //1.创建请求对象
@@ -90,8 +90,8 @@ public class StudentController {
     @ApiOperation("删除文档")
     @DeleteMapping ("/{index}/{id}")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引名称", name = "index"),
-            @ApiImplicitParam(value = "唯一性标识", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "唯一性标识", name = "id",dataTypeClass = String.class)
     })
     public DeleteResponse deletedDoc(@PathVariable("index") String index,@PathVariable("id") String id) throws Exception {
         //1.创建请求对象

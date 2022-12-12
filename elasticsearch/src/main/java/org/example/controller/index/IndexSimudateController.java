@@ -34,7 +34,7 @@ public class IndexSimudateController {
 
     @ApiOperation("模拟索引")
     @PostMapping("/{index}")
-    @ApiImplicitParam(value = "索引", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SimulateIndexTemplateResponse createdComposable(@PathVariable String index) throws Exception {
         SimulateIndexTemplateRequest simulateRequest = new SimulateIndexTemplateRequest(index);
         PutComposableIndexTemplateRequest newIndexTemplateRequest = new PutComposableIndexTemplateRequest().name("used-for-simulation");

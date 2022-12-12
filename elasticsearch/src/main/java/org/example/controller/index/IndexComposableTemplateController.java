@@ -37,7 +37,7 @@ public class IndexComposableTemplateController {
 
     @ApiOperation("创建组合")
     @PostMapping ("/{name}")
-    @ApiImplicitParam(value = "名称", name = "name")
+    @ApiImplicitParam(value = "名称", name = "name",dataTypeClass = String.class)
     public GetComposableIndexTemplatesResponse createdComposable(@PathVariable String name) throws Exception {
         GetComposableIndexTemplateRequest request = new GetComposableIndexTemplateRequest(name);
 //        request = new GetComposableIndexTemplateRequest("my-*");
@@ -47,7 +47,7 @@ public class IndexComposableTemplateController {
 
     @ApiOperation("更新组合")
     @PutMapping ("/{name}")
-    @ApiImplicitParam(value = "名称", name = "name")
+    @ApiImplicitParam(value = "名称", name = "name",dataTypeClass = String.class)
     public AcknowledgedResponse updateComposable(@PathVariable String name) throws Exception {
         PutComposableIndexTemplateRequest request = new PutComposableIndexTemplateRequest().name(name);
 //       setting
@@ -66,7 +66,7 @@ public class IndexComposableTemplateController {
 
     @ApiOperation("映射组合")
     @PostMapping ("/mapping/{name}")
-    @ApiImplicitParam(value = "名称", name = "name")
+    @ApiImplicitParam(value = "名称", name = "name",dataTypeClass = String.class)
     public void mapping(@PathVariable String name) throws Exception{
         String mappingJson = "{\n" +
                 "  \"properties\": {\n" +
@@ -122,7 +122,7 @@ public class IndexComposableTemplateController {
 
     @ApiOperation("删除组合")
     @DeleteMapping ("/{name}")
-    @ApiImplicitParam(value = "名称", name = "name")
+    @ApiImplicitParam(value = "名称", name = "name",dataTypeClass = String.class)
     public AcknowledgedResponse deleted(@PathVariable String name) throws Exception{
         DeleteComposableIndexTemplateRequest request = new DeleteComposableIndexTemplateRequest(name);
         AcknowledgedResponse response = client.indices().deleteIndexTemplate(request, RequestOptions.DEFAULT);

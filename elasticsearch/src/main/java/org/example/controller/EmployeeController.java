@@ -190,7 +190,7 @@ public class EmployeeController {
 
     @ApiOperation(value = "搜索",notes = "分页+搜索")
     @GetMapping("findByFirstNameOrLastName")
-    @ApiImplicitParam(value = "大小", name = "size", defaultValue = "1")
+    @ApiImplicitParam(value = "大小", name = "size", defaultValue = "1",dataTypeClass = Integer.class)
     public Page<Employee> findByFirstNameOrLastName(@RequestParam int size, @RequestParam String firstName, @Pattern(regexp = "$|[\\u4E00-\\u9FA5A-Za-z0-9\\u0020]+", message = "请输入英文或中文或数字") @RequestParam String lastName) {
         return employeeRepository.findByFirstNameOrLastName(firstName, lastName, Pageable.ofSize(size));
     }

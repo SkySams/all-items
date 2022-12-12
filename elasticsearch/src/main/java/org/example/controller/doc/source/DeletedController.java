@@ -34,10 +34,9 @@ public class DeletedController {
 
     @ApiOperation(value = "删除", notes = "")
     @PutMapping("/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index", dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id", dataTypeClass = String.class)
     })
     public DeleteResponse deleted(@PathVariable String index, @PathVariable("id") String id) throws Exception {
         DeleteRequest request = new DeleteRequest(index,id);
@@ -69,10 +68,9 @@ public class DeletedController {
 
     @ApiOperation(value = "删除2", notes = "")
     @PutMapping("/type2/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id",dataTypeClass = String.class)
     })
     public DeleteResponse deletedType2(@PathVariable String index, @PathVariable("id") String id) throws Exception {
         DeleteResponse deleteResponse = null;

@@ -29,7 +29,7 @@ public class IndexFreezeController {
 
     @ApiOperation("冻结索引")
     @PutMapping("/freeze/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public ShardsAcknowledgedResponse freeze(@PathVariable String index) throws Exception {
         FreezeIndexRequest request = new FreezeIndexRequest(index);
         ShardsAcknowledgedResponse openIndexResponse = client.indices().freeze(request, RequestOptions.DEFAULT);
@@ -38,7 +38,7 @@ public class IndexFreezeController {
 
     @ApiOperation("解冻索引")
     @PutMapping("/unfreeze /{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public ShardsAcknowledgedResponse unfreeze(@PathVariable String index) throws Exception {
         UnfreezeIndexRequest request = new UnfreezeIndexRequest(index);
         ShardsAcknowledgedResponse openIndexResponse = client.indices().unfreeze(request, RequestOptions.DEFAULT);

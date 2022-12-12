@@ -27,7 +27,7 @@ public class IndexMappingController {
 
     @ApiOperation("更改映射")
     @PostMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public AcknowledgedResponse updateMapping(@PathVariable String index) throws Exception {
         PutMappingRequest request = new PutMappingRequest(index);
         Map<String, Object> jsonMap = new HashMap<>();
@@ -43,7 +43,7 @@ public class IndexMappingController {
 
     @ApiOperation("获取映射")
     @GetMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public GetMappingsResponse getMapping(@PathVariable String index) throws Exception {
         GetMappingsRequest request = new GetMappingsRequest().indices(index);
         GetMappingsResponse getMappingResponse = client.indices().getMapping(request, RequestOptions.DEFAULT);
@@ -52,7 +52,7 @@ public class IndexMappingController {
 
     @ApiOperation("获取映射字段")
     @GetMapping("/field/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public GetFieldMappingsResponse getMappingField(@PathVariable String index,@RequestParam String key,@RequestParam String value) throws Exception {
         GetFieldMappingsRequest request = new GetFieldMappingsRequest();
         request.indices(index);

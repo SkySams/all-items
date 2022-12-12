@@ -26,7 +26,7 @@ public class TemplateController {
 
     @ApiOperation(value = "分页",notes = "分页查询")
     @PostMapping("page/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public Page searchPageTemplate(@PathVariable("index") String index, @RequestBody Map map, @RequestParam Integer current, @RequestParam Integer size) throws Exception{
         Page<Employee> pages = employeeRepository.findAll(PageRequest.of(current,size));
         return pages;

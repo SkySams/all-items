@@ -34,10 +34,9 @@ public class GetSourceController {
 
     @ApiOperation(value = "source_type1", notes = "")
     @PutMapping("/{index}/{id}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引", name = "index"),
-            @ApiImplicitParam(value = "文本id", name = "id")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "文本id", name = "id",dataTypeClass = String.class)
     })
     public Map sourceType1(@PathVariable String index, @PathVariable("id") String id) throws Exception {
         GetSourceRequest request = new GetSourceRequest(index, id);

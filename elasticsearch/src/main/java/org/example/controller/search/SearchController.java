@@ -48,7 +48,7 @@ public class SearchController {
 
     @ApiOperation(value = "SEARCH-API")
     @PostMapping("/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchResponse searchApi(@PathVariable String index) throws Exception {
         SearchRequest request = new SearchRequest(index);
         request.indicesOptions(IndicesOptions.lenientExpandOpen());
@@ -63,12 +63,12 @@ public class SearchController {
     @ApiOperation(value = "SEARCH-PAGE-API")
     @PostMapping("/page/{index}/{from}/{size}/{duration}")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引名称", name = "index"),
-            @ApiImplicitParam(value = "当前页", name = "from"),
-            @ApiImplicitParam(value = "大小", name = "size"),
-            @ApiImplicitParam(value = "期间", name = "duration"),
-            @ApiImplicitParam(value = "key", name = "key"),
-            @ApiImplicitParam(value = "value", name = "value"),
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "当前页", name = "from",dataTypeClass = Integer.class),
+            @ApiImplicitParam(value = "大小", name = "size",dataTypeClass = Integer.class),
+            @ApiImplicitParam(value = "期间", name = "duration",dataTypeClass = Long.class),
+            @ApiImplicitParam(value = "key", name = "key",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "value", name = "value",dataTypeClass = String.class),
     })
     public SearchResponse searchPage(@PathVariable String index, @PathVariable int from, @PathVariable int size,
                                      @PathVariable long duration,
@@ -91,8 +91,8 @@ public class SearchController {
     @ApiOperation(value = "SEARCH-HIGH-API")
     @PostMapping("/page/highlight/{index}")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引名称", name = "index"),
-            @ApiImplicitParam(value = "key", name = "key")
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "key", name = "key",dataTypeClass = String.class)
     })
     public SearchResponse searchHighlight(@PathVariable String index, @RequestParam String key) throws Exception {
         SearchSourceBuilder builder = new SearchSourceBuilder();
@@ -111,7 +111,7 @@ public class SearchController {
 
     @ApiOperation(value = "SEARCH-AGGREGATION-API")
     @PostMapping("/aggregations/{index}")
-    @ApiImplicitParam(value = "索引名称", name = "index")
+    @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class)
     public SearchResponse searchAggregations(@PathVariable String index) throws Exception {
         SearchRequest request = new SearchRequest(index);
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
@@ -128,9 +128,9 @@ public class SearchController {
     @ApiOperation(value = "SEARCH-BUILDING-API")
     @PostMapping("/builder/{index}")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引名称", name = "index"),
-            @ApiImplicitParam(value = "字段", name = "field"),
-            @ApiImplicitParam(value = "值", name = "value"),
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "字段", name = "field",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "值", name = "value",dataTypeClass = String.class),
     })
     public SearchResponse searchBuildingQueries(@PathVariable String index,@RequestParam String field,@RequestParam String value) throws Exception {
         SearchRequest request = new SearchRequest(index);
@@ -152,9 +152,9 @@ public class SearchController {
     @ApiOperation(value = "SEARCH-SUGGESIONS-API")
     @PostMapping("/suggestions/{index}")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "索引名称", name = "index"),
-            @ApiImplicitParam(value = "字段", name = "field"),
-            @ApiImplicitParam(value = "值", name = "value"),
+            @ApiImplicitParam(value = "索引名称", name = "index",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "字段", name = "field",dataTypeClass = String.class),
+            @ApiImplicitParam(value = "值", name = "value",dataTypeClass = String.class),
     })
     public SearchResponse searchSuggestions(@PathVariable String index,@RequestParam String field,@RequestParam String value) throws Exception {
         SearchRequest request = new SearchRequest(index);
