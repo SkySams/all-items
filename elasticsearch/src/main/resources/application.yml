@@ -38,5 +38,5 @@ knife4j:
 
 logging:
   level:
-    root: info
+    root: debug
 

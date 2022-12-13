@@ -16,4 +16,5 @@
 10、自定义了回滚异常
 11、嵌套事务回滚多了
 
-[spring中午文档](https://www.springcloud.cc/spring-reference.html)
+[spring中午文档](https://www.springcloud.cc/spring-reference.html) \
+[spring basic doc](https://docs.spring.io/spring-framework/docs/6.0.0/reference/html/index.html)

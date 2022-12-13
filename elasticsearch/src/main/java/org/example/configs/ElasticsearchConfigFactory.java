@@ -1,13 +1,20 @@
 package org.example.configs;
 
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.transport.TransportClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.RestClients;
+import org.springframework.data.elasticsearch.client.reactive.ReactiveElasticsearchClient;
+import org.springframework.data.elasticsearch.client.reactive.ReactiveRestClients;
+import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
+import org.springframework.http.HttpHeaders;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author: zyh
@@ -55,16 +62,18 @@ public class ElasticsearchConfigFactory {
 
     @Bean
     public RestHighLevelClient restHighLevelClient() {
+        return RestClients.create(clientConfiguration()).rest();
+    }
 
-        final ClientConfiguration clientConfiguration = ClientConfiguration.builder()
+    public ClientConfiguration clientConfiguration (){
+      final ClientConfiguration clientConfiguration = ClientConfiguration.builder()
                 .connectedTo("127.0.0.1:9200")
                 .withConnectTimeout(Duration.ofSeconds(5))
                 .withSocketTimeout(Duration.ofSeconds(3))
                 .withBasicAuth(username, password)
                 .build();
-        return RestClients.create(clientConfiguration).rest();
+        return clientConfiguration;
     }
-
 
 
 }

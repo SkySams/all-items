@@ -14,7 +14,9 @@ import org.example.Esdao.EmployeeRepository;
 import org.example.dao.ProductDao;
 import org.example.entity.Employee;
 import org.example.entity.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
+import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.geo.GeoPage;
@@ -41,6 +43,19 @@ public class EmployeeController {
 
     @Resource
     private ProductDao productDao;
+
+
+    @Autowired
+    private ElasticsearchOperations elasticsearchOperations;
+
+
+    @ApiOperation("查询elastic")
+    @RequestMapping(value = "elastic/search/operation/query", method = RequestMethod.GET)
+    public Employee operations(@RequestParam String id) {
+        Employee employee = elasticsearchOperations.get(id,Employee.class);
+        return employee;
+    }
+
 
     /**
      * @return
