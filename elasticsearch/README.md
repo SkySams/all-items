@@ -1,9 +1,11 @@
 # build  Elasticsearch/Logstash/Kibana
-[版本文版]https://www.elastic.co/guide/en/elasticsearch/reference/6.0/_basic_concepts.html
->https://www.elastic.co/guide/en/elasticsearch/reference/7.17/getting-started.html
+[版本文版](https://www.elastic.co/guide/en/elasticsearch/reference/6.0/_basic_concepts.html)
 
 
-[客户端链接]https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.14/java-rest-high.html
+[客户端7.17](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/getting-started.html)
+
+
+[客户端链接](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.14/java-rest-high.html)
 
 什么是Elasticsearch
 答：Elasticsearch 是位于Elastic Stack 核心的分布式搜索和分析引擎
@@ -62,7 +64,7 @@ filebeat -e -c filebeat.yml
 目前， 唯一的类型族是keyword, 它由keyword、constant_keyword和wildword字段类型组成。
 其他类型只有一个字段类型，例如，boolean 类型族有一种字段类型组成：boolean
 
-[常见的类型] https://www.elastic.co/guide/en/elasticsearch/reference/7.14/mapping-types.html#aggregated-data-types
+[常见的类型](https://www.elastic.co/guide/en/elasticsearch/reference/7.14/mapping-types.html#aggregated-data-types)
 
 binary:
 > 编码为Base64字符串的二进制值
@@ -105,7 +107,7 @@ ip
 > IPv4 和　IPv6 地址
 
 version
-> 软件版本。[支持语义版本控制]https://semver.org/lang/zh-CN/ 优先规则。
+> 软件版本。[支持语义版本控制](https://semver.org/lang/zh-CN/) 优先规则。
 
 murmur3
 > 计算和存储值的哈希值。
@@ -167,11 +169,11 @@ shape
 其他类型
 
 percolator
-> 索引用[Qury DSL] https://www.elastic.co/guide/en/elasticsearch/reference/7.14/query-dsl.html 编辑的查询
+> 索引用[Qury DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.14/query-dsl.html) 编辑的查询
 
 组数
 > 在 Elasticsearch 中，数组不需要专用的字段数据类型。默认情况下，任何字段都可以包含零个或多个值，
-> 但是，数组中的所有值必须是相同的字段类型。[请参阅] https://www.elastic.co/guide/en/elasticsearch/reference/7.14/array.html
+> 但是，数组中的所有值必须是相同的字段类型。[请参阅](https://www.elastic.co/guide/en/elasticsearch/reference/7.14/array.html)
 
 多领域
 > 出于不同目的以不同方式索引同一字段通常很有用。
