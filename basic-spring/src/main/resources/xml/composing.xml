@@ -1,0 +1,4 @@
+<beans>
+    <import resource="/xml/services.xml"/>
+    <import resource="/xml/daos.xml"/>
+</beans>
