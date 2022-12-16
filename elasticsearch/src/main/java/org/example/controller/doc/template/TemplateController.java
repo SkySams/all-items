@@ -3,7 +3,7 @@ package org.example.controller.doc.template;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import org.example.Esdao.EmployeeRepository;
+import org.example.esdao.EmployeeRepository;
 import org.example.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

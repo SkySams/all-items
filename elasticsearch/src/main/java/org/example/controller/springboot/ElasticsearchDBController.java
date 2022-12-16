@@ -2,7 +2,7 @@ package org.example.controller.springboot;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.example.Esdao.ElasticsearchDBRepository;
+import org.example.esdao.ElasticsearchDBRepository;
 import org.example.entity.es.ElasticsearchDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;

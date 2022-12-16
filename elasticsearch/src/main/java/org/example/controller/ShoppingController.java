@@ -2,10 +2,7 @@ package org.example.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.index.query.TermQueryBuilder;
-import org.example.Esdao.ShoppingRepository;
-import org.example.entity.Product;
+import org.example.esdao.ShoppingRepository;
 import org.example.entity.es.ShoppingEs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

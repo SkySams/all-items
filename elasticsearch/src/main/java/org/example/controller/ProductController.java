@@ -2,7 +2,7 @@ package org.example.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.example.Esdao.ProductRepository;
+import org.example.esdao.ProductRepository;
 import org.example.entity.es.ProductEs;
 import org.springframework.web.bind.annotation.*;
 

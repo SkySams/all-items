@@ -1,4 +1,4 @@
-package org.example.Esdao;
+package org.example.esdao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.example.entity.Product;

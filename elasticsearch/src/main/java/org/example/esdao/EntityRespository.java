@@ -1,4 +1,4 @@
-package org.example.Esdao;
+package org.example.esdao;
 
 import org.example.entity.es.Entity;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

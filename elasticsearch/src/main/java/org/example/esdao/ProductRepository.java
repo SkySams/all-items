@@ -1,6 +1,5 @@
-package org.example.Esdao;
+package org.example.esdao;
 
-import org.example.Elasticsearch;
 import org.example.entity.es.ProductEs;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Component;
