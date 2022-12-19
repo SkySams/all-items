@@ -27,7 +27,7 @@ public class ThreadSecurity {
      */
     @Test
     public void one() throws InterruptedException {
-        Account account = new Account(1,30000D);
+        Account account = new Account(1,300D);
         AccountThread accountThread = new AccountThread(account);
 
         Thread thread1 = new Thread(accountThread);
@@ -51,7 +51,7 @@ class AccountThread implements Runnable {
 
     @Override
     public void run() {
-        Double money = 5000d;
+        Double money = 50D;
         Double balance = account.withdraw(money);
         System.out.println(Thread.currentThread().getName() + " 取款 " + money + "元！余额为：" + balance);
     }
@@ -59,12 +59,18 @@ class AccountThread implements Runnable {
 
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 class Account{
 
     private Integer id;
     private Double balance;
+
+    public Account() {
+    }
+
+    public Account(Integer id, Double balance) {
+        this.id = id;
+        this.balance = balance;
+    }
 
     public Double withdraw(Double amount){
         return balance = balance - amount;
