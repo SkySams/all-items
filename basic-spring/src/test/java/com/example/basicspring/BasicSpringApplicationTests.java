@@ -1,5 +1,6 @@
 package com.example.basicspring;
 
+import com.example.basicspring.service.ClientService;
 import com.example.basicspring.service.PetStoreService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
@@ -31,6 +32,13 @@ class BasicSpringApplicationTests {
         GenericApplicationContext context = new GenericApplicationContext();
         new XmlBeanDefinitionReader(context).loadBeanDefinitions(PREFIX_PATH+"services.xml",PREFIX_PATH+"daos.xml");
         context.refresh();
+    }
+
+    @Test
+    void clientService(){
+        ApplicationContext context = new ClassPathXmlApplicationContext(PREFIX_PATH+"services.xml");
+        ClientService service = context.getBean("clientService", ClientService.class);
+        System.out.println(service);
     }
 
 }

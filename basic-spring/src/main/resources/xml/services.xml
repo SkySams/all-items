@@ -6,4 +6,9 @@
     <bean id="petStoreService" class="com.example.basicspring.service.impl.PetStoreServiceImpl">
     </bean>
 
+    <bean id="clientService"
+          class="com.example.basicspring.service.ClientService"
+          factory-method="createInstance"/>
+
+
 </beans>
