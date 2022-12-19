@@ -2,12 +2,15 @@ package com.example.basicspring;
 
 import com.example.basicspring.service.ClientService;
 import com.example.basicspring.service.PetStoreService;
+import com.example.basicspring.service.SomeClass;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
+
+import java.util.Map;
 
 @SpringBootTest
 class BasicSpringApplicationTests {
@@ -39,6 +42,14 @@ class BasicSpringApplicationTests {
         ApplicationContext context = new ClassPathXmlApplicationContext(PREFIX_PATH+"services.xml");
         ClientService service = context.getBean("clientService", ClientService.class);
         System.out.println(service);
+    }
+
+    @Test
+    void someClass(){
+        ApplicationContext context = new ClassPathXmlApplicationContext(PREFIX_PATH+"services.xml");
+        SomeClass someClass = context.getBean("something", SomeClass.class);
+        Map<String, Float> accounts = someClass.getAccounts();
+        System.out.println(accounts);
     }
 
 }

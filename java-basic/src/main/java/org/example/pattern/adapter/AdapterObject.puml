@@ -1,0 +1,23 @@
+@startuml
+package org.example.pattern.adapter{
+    class Adaptee {
+        + adapteeRequest()
+    }
+
+    interface Target {
+        - request()
+    }
+
+    class ConcreteTarget {
+        + request()
+    }
+
+    class AdapterClass {
+        + request()
+    }
+}
+
+ConcreteTarget  ..|> "target" Target
+AdapterClass --|> Adaptee
+AdapterClass ..|> Target
+@enduml

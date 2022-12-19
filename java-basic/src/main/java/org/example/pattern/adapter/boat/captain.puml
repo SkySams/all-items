@@ -1,0 +1,36 @@
+@startuml
+package org.example.pattern.system {
+
+    class App {
+        - App()
+        + main(String[] args)
+    }
+
+    class Captain{
+        - rowingBoat : RowingBoat
+        + Captain()
+        + Captain(boot : RowingBoat)
+        ~ row()
+        ~ setRowingBoat(boot : RowingBoat)
+    }
+    interface RowingBoat {
+        + row() {abstract}
+    }
+
+    ~class FishingBoat{
+        ~FishingBoat()
+        ~sail()
+    }
+    class FishingBoatAdapter {
+        - boat : FishingBoat
+        + FishingBoatAdapter()
+        + row()
+    }
+
+}
+
+FishingBoatAdapter --> "-boat" FishingBoat
+Captain --> "-rowingBoat" RowingBoat
+FishingBoatAdapter ..|> RowingBoat
+
+@enduml

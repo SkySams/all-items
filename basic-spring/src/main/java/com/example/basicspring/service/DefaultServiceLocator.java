@@ -2,15 +2,15 @@ package com.example.basicspring.service;
 
 /**
  * @author: zyh
- * @date: 2022/12/16
+ * @date: 2022/12/19
  */
-public class ClientService {
+public class DefaultServiceLocator {
 
     private static ClientService clientService = new ClientService();
-    public ClientService() {}
 
-    public static ClientService createInstance() {
+    public ClientService createClientServiceInstance() {
         return clientService;
     }
 
 }
+

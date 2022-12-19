@@ -1,0 +1,23 @@
+@startuml
+package org.example.pattern.adapter.voltage{
+    class Ac220 {
+        + outputAC220V() output = 220 : output
+    }
+
+    interface Ac5 {
+        -outputDC5V(){abstract}
+    }
+
+    class PowerAdapter {
+        - Ac220 : ac220
+        + outputDC5V() : adapterInput
+    }
+
+
+}
+
+
+PowerAdapter ..|> Ac5
+
+
+@enduml
