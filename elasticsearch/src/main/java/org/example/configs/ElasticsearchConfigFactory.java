@@ -71,6 +71,7 @@ public class ElasticsearchConfigFactory {
                 .withConnectTimeout(Duration.ofSeconds(5))
                 .withSocketTimeout(Duration.ofSeconds(3))
                 .withBasicAuth(username, password)
+                .withPathPrefix("ela")
                 .build();
         return clientConfiguration;
     }

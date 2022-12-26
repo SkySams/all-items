@@ -16,6 +16,7 @@ import org.springframework.web.util.HtmlUtils;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 
 @Slf4j
 @Api(tags = "ORDER")
@@ -28,6 +29,9 @@ public class OrderController extends BaseController {
     @Qualifier("CustomServiceImpl")
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private List<OrderService> orderServiceList;
 
     @ApiOperation("DAY")
     @GetMapping("/{day}")

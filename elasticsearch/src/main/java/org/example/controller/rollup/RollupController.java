@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.RollupClient;
 import org.elasticsearch.client.core.AcknowledgedResponse;
