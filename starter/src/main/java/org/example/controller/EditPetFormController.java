@@ -174,12 +174,6 @@ public class EditPetFormController {
         return map;
     }
 
-    public static void main(String[] args) {
-        User user = new User("eric", "nice");
-        Map<String,Object> map =  BeanUtil.beanToMap(user);
-        System.out.println(map);
-    }
-
 
 
 }
