@@ -17,4 +17,5 @@
 11、嵌套事务回滚多了 
 
 [spring中午文档](https://www.springcloud.cc/spring-reference.html) \
-[spring basic doc](https://docs.spring.io/spring-framework/docs/6.0.0/reference/html/index.html)
+[spring basic doc](https://docs.spring.io/spring-framework/docs/6.0.0/reference/html/index.html) \
+[Java进阶](https://doocs.gitee.io/advanced-java/#/docs/high-concurrency/high-concurrency-design)

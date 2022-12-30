@@ -10,9 +10,6 @@ public class DecoraClient {
         Human human = new Person();
         Decorator decorator = new Decorator_two(new Decorator_one(new Decorator_zero(human)));
         decorator.wearClothes();
-
-        Person person = null;
-        System.out.println(person == null);
     }
 
 }
