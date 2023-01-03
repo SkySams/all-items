@@ -11,7 +11,7 @@ import com.google.common.primitives.Ints;
  */
 public class RangeTest {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         RangeTest tester = new RangeTest();
         tester.testRange();
     }

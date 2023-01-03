@@ -47,6 +47,7 @@ public class OrderingTest {
 
 
         numbers.add(null);
+        numbers.add(null);
         System.out.println("Null added to Sorted List: ");
         System.out.println(numbers);
 
@@ -68,6 +69,7 @@ public class OrderingTest {
         names.add(null);
         names.add("Vikas");
         names.add("Deepak");
+        names.add(null);
 
         System.out.println("Another List: ");
         System.out.println(names);
