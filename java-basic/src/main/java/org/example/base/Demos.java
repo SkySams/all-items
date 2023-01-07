@@ -84,8 +84,8 @@ public class Demos {
         s();
 
 //        test(); [{0}]
-        System.out.println(unicodeDecode("\\u91cd\\u590d\\u63a8\\u8350"));
-        System.out.println(unicodeEncode("重复推荐"));
+        System.out.println(unicodeDecode("\\u6D3B\\u52A8\\u65F6\\u95F4\\u91CD\\u590D"));
+        System.out.println(unicodeEncode(""));
 
         LocalDateTime localDateTime = LocalDateTimeUtil.of(new Date());
 //        LocalDateTime offset = LocalDateTimeUtil.offset(localDateTime, 30, ChronoUnit.MINUTES);
