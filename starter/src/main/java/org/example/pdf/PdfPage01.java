@@ -14,16 +14,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PdfPage01 {
-    // 基础配置
-    private static String PDF_SITE = "E:\\pdf\\PDF页面.pdf" ;
-    private static String FONT = "C:\\Windows\\Fonts\\simhei.ttf";
-    private static String PAGE_TITLE = "PDF数据导出报告" ;
-    // 基础样式
-    private static Font TITLE_FONT = FontFactory.getFont(FONT, BaseFont.IDENTITY_H,20, Font.BOLD);
-    private static Font NODE_FONT = FontFactory.getFont(FONT, BaseFont.IDENTITY_H,15, Font.BOLD);
-    private static Font BLOCK_FONT = FontFactory.getFont(FONT, BaseFont.IDENTITY_H,13, Font.BOLD, BaseColor.BLACK);
-    private static Font INFO_FONT = FontFactory.getFont(FONT, BaseFont.IDENTITY_H,12, Font.NORMAL, BaseColor.BLACK);
-    private static Font CONTENT_FONT = FontFactory.getFont(FONT, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+    /**
+     * 基础配置
+     */
+    private static final String PDF_SITE = "E:\\pdf\\PDF页面.pdf" ;
+    private static final String FONT = "C:\\Windows\\Fonts\\simhei.ttf";
+    private static final String PAGE_TITLE = "PDF数据导出报告" ;
+    /**
+     * 基础样式
+     */
+    private static final Font TITLE_FONT = FontFactory.getFont(FONT, BaseFont.IDENTITY_H,20, Font.BOLD);
+    private static final Font NODE_FONT = FontFactory.getFont(FONT, BaseFont.IDENTITY_H,15, Font.BOLD);
+    private static final Font BLOCK_FONT = FontFactory.getFont(FONT, BaseFont.IDENTITY_H,13, Font.BOLD, BaseColor.BLACK);
+    private static final Font INFO_FONT = FontFactory.getFont(FONT, BaseFont.IDENTITY_H,12, Font.NORMAL, BaseColor.BLACK);
+    private static final Font CONTENT_FONT = FontFactory.getFont(FONT, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 
     private static void createPdfPage () throws Exception {
         // 创建文档
