@@ -59,6 +59,16 @@ public class Fields {
             //暴力反射，解除私有限定
             field.setAccessible(true);
             field.set(obj,"1598654");
+
+
+            field =  clazz.getDeclaredField("age");
+            System.out.println(field);
+            field.set(obj, 18);
+
+            field =  clazz.getDeclaredField("name");
+            System.out.println(field);
+            field.set(obj, "nice");
+
             System.out.println("验证电话：" + stu);
 
 

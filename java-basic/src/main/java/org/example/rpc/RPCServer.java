@@ -84,6 +84,7 @@ public class RPCServer {
                 Object result = method.invoke(serviceClass.newInstance(), arguments);
                 output = new ObjectOutputStream(client.getOutputStream());
                 output.writeObject(result);
+                System.out.println("RPCServer received: "+ result);
             } catch (Exception e) {
                 e.printStackTrace();
 
