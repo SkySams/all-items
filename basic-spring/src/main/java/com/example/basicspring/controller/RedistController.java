@@ -19,6 +19,7 @@ public class RedistController {
     @Autowired
     private RedissonClient redisson;
 
+
     /**
      * 闭锁（CountDownLatch）
      * @return
