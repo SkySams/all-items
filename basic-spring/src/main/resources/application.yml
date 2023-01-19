@@ -8,3 +8,9 @@ bobo:
     port: 6379
     timeout: 1
     ssl: false
+
+spring:
+  cache:
+    type: REDIS
+    redis:
+      time-to-live: 60000

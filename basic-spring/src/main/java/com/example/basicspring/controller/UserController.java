@@ -1,6 +1,7 @@
 package com.example.basicspring.controller;
 
 import com.example.basicspring.entity.MUser;
+import com.example.basicspring.service.UserService;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,15 @@ public class UserController {
     @Autowired
     private RedissonClient redisson;
 
+    @Autowired
+    private UserService userService;
+
     @PostMapping("/addUser")
     public Integer insert(@RequestBody MUser user) {
-        RBucket<Object> bucket = redisson.getBucket(USER_BUCKET_KEY + user.getId());
-        //塞入缓存
-        MUser u = new MUser();
-        u.setId(user.getId());
-        u.setName(user.getName());
-        bucket.set(user);
+//        RBucket<Object> bucket = redisson.getBucket(USER_BUCKET_KEY + user.getId());
+//        //塞入缓存
+//        bucket.set(user);
+        userService.addUser(1);
         return user.getId();
     }
 
