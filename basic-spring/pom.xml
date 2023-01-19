@@ -34,6 +34,13 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.8</version>
         </dependency>
+
+        <dependency>
+            <artifactId>redisson-starter</artifactId>
+            <groupId>org.example</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>

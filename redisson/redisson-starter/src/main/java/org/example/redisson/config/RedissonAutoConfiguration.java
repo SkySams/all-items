@@ -3,6 +3,7 @@ package org.example.redisson.config;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
+import org.redisson.config.TransportMode;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +25,9 @@ public class RedissonAutoConfiguration {
         if(redissonProperties.isSsl()){
             prefix = "rediss://";
         }
+        // 程序化配置方法
+        // config.setTransportMode(TransportMode.EPOLL);
+
         // 单节点连接配置
         config.useSingleServer()
                 .setAddress(prefix+redissonProperties.getHost()+":"+redissonProperties.getPort())

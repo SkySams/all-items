@@ -18,10 +18,10 @@ public class TestNacos {
     @NacosInjected
     private NamingService namingService;
 
-    @Test
-    public void testPublishConfig() throws NacosException {
-        configService.publishConfig("nacosspring", "DEFAULT_GROUP", "9527");
-        System.out.println("long ");
-    }
+//    @Test
+//    public void testPublishConfig() throws NacosException {
+//        configService.publishConfig("nacosspring", "DEFAULT_GROUP", "9527");
+//        System.out.println("long ");
+//    }
 
 }

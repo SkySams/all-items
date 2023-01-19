@@ -2,6 +2,7 @@ package org.example.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.format.datetime.DateFormatter;
 import org.springframework.web.bind.WebDataBinder;
@@ -23,9 +24,13 @@ import java.util.Map;
 @Api(tags = "Spring 数据转换")
 @RestController
 @RequestMapping("/init")
-public class InitBinderController {
+public class InitBinderController implements InitializingBean {
 
 
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("InitializingBean afterPropertiesSet");
+    }
 
     @InitBinder
     public void initBuider(WebDataBinder dataBinder){
@@ -39,9 +44,10 @@ public class InitBinderController {
     @ApiOperation("时间转换")
     @GetMapping()
     public Map<String,Object> init(Date date){
-        Map<String,Object> map = new HashMap<>();
+        Map<String,Object> map = new HashMap<>(10);
         map.put("date", date);
         return map;
     }
+
 
 }
