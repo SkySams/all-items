@@ -1,10 +1,9 @@
 package org.example.config;
 
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.logging.LogFactory;
+import com.itextpdf.text.log.Logger;
+import com.itextpdf.text.log.LoggerFactory;
 import org.example.service.impl.AsyncDispatcherServletListener;
 import org.springframework.web.servlet.DispatcherServlet;
-import sun.rmi.runtime.Log;
 
 import javax.servlet.AsyncContext;
 import javax.servlet.ServletConfig;
@@ -20,9 +19,9 @@ import java.util.concurrent.FutureTask;
  * @author: zyh
  * @date: 2022/6/1
  */
-@Slf4j
 @WebServlet(urlPatterns = {"/start/*"}, asyncSupported = true, name = "start")
 public class AsyncDispatcherServlet extends DispatcherServlet {
+    private final Logger log = LoggerFactory.getLogger(AsyncDispatcherServlet.class);
     private ExecutorService exececutor;
     private static final int NUM_ASYNC_TASKS = 15;
     private static final long TIME_OUT = 10 * 1000;

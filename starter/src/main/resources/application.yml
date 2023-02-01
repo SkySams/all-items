@@ -1,0 +1,27 @@
+server:
+  port: 8033
+  servlet:
+    context-path: /start
+
+
+spring:
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60000
+  session:
+    store-type: jdbc
+  jackson:
+    default-property-inclusion: NON_NULL
+
+bobo:
+  redisson:
+    host: localhost
+    timeout: 1000
+    port: 6379
+    ssl: false
+
+
+
+knife4j:
+  enable: true
