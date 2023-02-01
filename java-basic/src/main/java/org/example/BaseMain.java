@@ -8,10 +8,18 @@ import org.junit.Test;
  */
 public class BaseMain {
 
+
     public static void main(String[] args) {
-        System.out.println(System.getProperty("java.version"));
-        System.out.println(System.getProperty("java.vm.version"));
-        System.out.println(System.getProperty("user.name"));
+         Integer num = 0;
+//        System.out.println(System.getProperty("java.version"));
+//        System.out.println(System.getProperty("java.vm.version"));
+//        System.out.println(System.getProperty("user.name"));
+        new BaseMain().test();
+        System.out.println(num);
+    }
+    public  void test(){
+        int num = 12;
+        System.out.println("hello");
     }
 
     @Test
