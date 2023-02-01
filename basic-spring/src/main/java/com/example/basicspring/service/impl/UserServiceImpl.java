@@ -2,9 +2,11 @@ package com.example.basicspring.service.impl;
 
 import com.example.basicspring.entity.MUser;
 import com.example.basicspring.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
  * @author: zyh
  * @date: 2023/1/19
  */
+@Slf4j
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
@@ -32,5 +35,16 @@ public class UserServiceImpl implements UserService {
         user.setName("name");
         System.out.println("nice");
         return user;
+    }
+
+    @Async("MyExecutor")
+    @Override
+    public void testAsync() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        log.info("正在测试testAysnc.....");
     }
 }

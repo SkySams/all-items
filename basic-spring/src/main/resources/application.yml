@@ -17,5 +17,6 @@ spring:
 
 # 修改日志等级\
 logging:
+  config: classpath:logback-spring.xml
   level:
     com.example.basicspring.service: debug

@@ -10,4 +10,6 @@ public interface UserService {
 
     MUser addUser(Integer id);
 
+    void testAsync();
+
 }
