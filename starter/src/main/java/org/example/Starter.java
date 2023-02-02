@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @author: zyh
  * @date: 2022/3/4
  */
-@EnableCaching
+@EnableCaching // 开启缓存
 @EnableAsync // 开启异步请求
 @SpringBootApplication
 @ConfigurationPropertiesScan(basePackages="org.example.**")

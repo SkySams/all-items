@@ -4,11 +4,13 @@ package com.example.basicspring.config;
 import com.example.basicspring.interceptor.LogInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * WebConfigurerAdapter.java 添加拦截器
+ *
  * @author: zyh
  * @date: 2023/2/1
  */
@@ -27,4 +29,5 @@ public class WebConfigurerAdapter implements WebMvcConfigurer {
 //                .addPathPatterns("/**")
 //                .excludePathPatterns("/testxx.html");
     }
+
 }

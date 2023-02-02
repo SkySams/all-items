@@ -2,6 +2,9 @@ package org.example;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author: zyh
  * @date: 2022/10/17
@@ -14,8 +17,11 @@ public class BaseMain {
 //        System.out.println(System.getProperty("java.version"));
 //        System.out.println(System.getProperty("java.vm.version"));
 //        System.out.println(System.getProperty("user.name"));
-        new BaseMain().test();
-        System.out.println(num);
+
+        List<Integer> l = new ArrayList<>();
+        l.add(1);
+        System.out.println(l.size());
+
     }
     public  void test(){
         int num = 12;
