@@ -10,8 +10,10 @@ import com.example.basicspring.annotation.RequestLimit;
 import com.example.basicspring.apireturn.ResultData;
 import com.example.basicspring.entity.dto.PayOrderApply;
 import com.example.basicspring.enums.CodeEnum;
+import com.example.basicspring.enums.EducateStatusEnum;
 import com.example.basicspring.message.LocaleMessage;
 import com.example.basicspring.service.UserService;
+import com.example.basicspring.util.EnumListUtil;
 import com.example.basicspring.util.IpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -89,6 +93,11 @@ public class TestController {
         }
 
         return ResultData.success(CodeEnum.SUCCESS);
+    }
+
+    @GetMapping("enums")
+    public List<Map<String, Object>> enums (){
+        return EnumListUtil.enumToListMap(EducateStatusEnum.class);
     }
 
 
