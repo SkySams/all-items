@@ -7,7 +7,10 @@ package com.example.basicspring.controller;
 
 import com.example.basicspring.annotation.RepeatDaMie;
 import com.example.basicspring.annotation.RequestLimit;
+import com.example.basicspring.apireturn.ResultData;
 import com.example.basicspring.entity.dto.PayOrderApply;
+import com.example.basicspring.enums.CodeEnum;
+import com.example.basicspring.message.LocaleMessage;
 import com.example.basicspring.service.UserService;
 import com.example.basicspring.util.IpUtil;
 import org.slf4j.Logger;
@@ -24,6 +27,9 @@ public class TestController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LocaleMessage localeMessage;
 
     @RepeatDaMie(second = 1000,describe = "尊敬的客户,您慢点")
     @PostMapping(value = "/doPost")
@@ -68,5 +74,22 @@ public class TestController {
         userService.testAsync();
         return "seccuss";
     }
+
+    @GetMapping("i18n")
+    public ResultData test(@RequestParam int testNum) {
+
+        if (1==testNum){
+            return ResultData.success(CodeEnum.SUCCESS);
+        }
+        if (2==testNum){
+            return ResultData.success(CodeEnum.FAIL);
+        }
+        if (3==testNum){
+            return ResultData.success("自定义的返回语");
+        }
+
+        return ResultData.success(CodeEnum.SUCCESS);
+    }
+
 
 }

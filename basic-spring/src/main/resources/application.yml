@@ -10,6 +10,9 @@ bobo:
     ssl: false
 
 spring:
+  messages:
+    basename: i18n.mess
+    encoding: UTF-8
   cache:
     type: REDIS
     redis:
@@ -20,3 +23,6 @@ logging:
   config: classpath:logback-spring.xml
   level:
     com.example.basicspring.service: debug
+
+lang:
+  open: true
