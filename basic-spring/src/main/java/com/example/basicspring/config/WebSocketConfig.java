@@ -40,10 +40,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         //注册两个STOMP的endpoint，分别用于广播和点对点
         //广播
-        registry.addEndpoint("/publicServer").setAllowedOrigins("*").withSockJS();
+        // setAllowedOrigins 会出现跨域问题
+        registry.addEndpoint("/publicServer").setAllowedOriginPatterns("*").withSockJS();
 
         //点对点
-        registry.addEndpoint("/privateServer").setAllowedOrigins("*").withSockJS();
+        registry.addEndpoint("/privateServer").setAllowedOriginPatterns("*").withSockJS();
     }
 
 //    @Bean

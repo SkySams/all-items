@@ -4,11 +4,9 @@ import com.example.basicspring.entity.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author: zyh
@@ -30,13 +28,5 @@ public class WebSocketController {
     public void subscribe( @RequestBody Message msg) {
         template.convertAndSend("/topic/all", msg.getContent());
     }
-
-    @GetMapping("/webSocket")
-    public ModelAndView socket() {
-        ModelAndView mav=new ModelAndView("/publicExample");
-        return mav;
-    }
-
-
 
 }
