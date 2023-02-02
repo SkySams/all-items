@@ -3,6 +3,7 @@ package com.example.basicspring.interceptor;
 
 import org.slf4j.MDC;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -16,6 +17,7 @@ import java.util.UUID;
  * @author: zyh
  * @date: 2023/2/1
  */
+@Component
 public class LogInterceptor implements HandlerInterceptor {
 
     private static final String TRACE_ID = "TRACE_ID";

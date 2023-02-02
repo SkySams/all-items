@@ -47,31 +47,5 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         registry.addEndpoint("/privateServer").setAllowedOriginPatterns("*").withSockJS();
     }
 
-//    @Bean
-//    public CorsFilter corsFilter() {
-//        // 1.配置CORS信息
-//        CorsConfiguration config = new CorsConfiguration();
-//        // 哪些原始域需要放行
-//        config.addAllowedOriginPattern("*"); //        config.addAllowedOrigin("*");
-//        // 哪些原始域需要放行(请求方式)
-//        config.addAllowedMethod("*");
-//        // 放行哪些原始域(头部信息)
-//        config.addAllowedHeader("*");
-//        // 是否发送Cookie信息
-//        config.setAllowCredentials(true);
-//        // 暴露哪些头部信息（因为跨域访问默认，所以不能获取到全部的头部信息）
-//        config.addExposedHeader(HttpHeaders.LOCATION);
-//        config.setExposedHeaders(Arrays.asList("JSESSIONID", "SESSION", "token", HttpHeaders.LOCATION,
-//                 HttpHeaders.ACCEPT, HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS,
-//                 HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS,
-//                HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, HttpHeaders.COOKIE, HttpHeaders.SET_COOKIE,
-//                HttpHeaders.SET_COOKIE2));
-//        // 2.添加映射路径实例
-//        UrlBasedCorsConfigurationSource configSource = new UrlBasedCorsConfigurationSource();
-//        configSource.registerCorsConfiguration("/**", config);
-//        // 3.返回新的CorsFilter.
-//        return new CorsFilter(configSource);
-//    }
-
 
 }

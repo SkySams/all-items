@@ -2,23 +2,24 @@ package com.example.basicspring.interceptor;
 
 import com.example.basicspring.annotation.RepeatDaMie;
 import com.example.basicspring.util.ContextUtil;
+import com.example.basicspring.util.IpUtil;
 import com.example.basicspring.util.Md5Encrypt;
 import com.example.basicspring.util.RedisUtils;
-import org.redisson.api.RBucket;
-import org.redisson.api.RedissonClient;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.HandlerInterceptor;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.HandlerInterceptor;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
+import java.util.UUID;
 
 /**
  * @author: zyh
@@ -36,7 +37,10 @@ public class ApiRepeatInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
         try {
+            String ip = IpUtil.getIpAddr(request);
+            log.info("请求ip地址： {}", ip);
             if (handler instanceof HandlerMethod) {
                 HandlerMethod handlerMethod = (HandlerMethod) handler;
                 // 获取RepeatDaMie注解

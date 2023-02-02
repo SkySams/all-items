@@ -6,7 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 自定义注解
+ *
+ * 自定义幂等性注解
  * @author: zyh
  * @date: 2023/2/1
  */

@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 
-@EnableCaching
+@EnableCaching // 开启缓存
 @SpringBootApplication
 @ConfigurationPropertiesScan(basePackages="org.example.**")
 public class BasicSpringApplication {
