@@ -8,26 +8,24 @@ package com.example.basicspring.controller;
 import com.example.basicspring.annotation.RepeatDaMie;
 import com.example.basicspring.annotation.RequestLimit;
 import com.example.basicspring.apireturn.ResultData;
+import com.example.basicspring.entity.TestArray;
 import com.example.basicspring.entity.dto.PayOrderApply;
 import com.example.basicspring.enums.CodeEnum;
 import com.example.basicspring.enums.EducateStatusEnum;
 import com.example.basicspring.message.LocaleMessage;
 import com.example.basicspring.service.UserService;
 import com.example.basicspring.util.EnumListUtil;
-import com.example.basicspring.util.IpUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@Slf4j
 @RestController
 public class TestController {
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private UserService userService;
@@ -98,6 +96,26 @@ public class TestController {
     @GetMapping("enums")
     public List<Map<String, Object>> enums (){
         return EnumListUtil.enumToListMap(EducateStatusEnum.class);
+    }
+
+    @GetMapping("arrays")
+    public Map<String,Object> testArrays(int [] numArray, String[] strArray){
+        Map<String,Object> map = new HashMap<>();
+        map.put("numArray", numArray);
+        map.put("strArray", strArray);
+        log.info("numArray：{}",numArray);
+        log.info("strArray：{}",strArray);
+        return map;
+    }
+
+    @PostMapping("arrays")
+    public Map<String,Object> testPostArrays(@RequestBody TestArray testArray){
+        Map<String,Object> map = new HashMap<>();
+        map.put("numArray", testArray.getNumArray());
+        map.put("strArray", testArray.getStrArray());
+        log.info("numArray：{}",testArray.getNumArray());
+        log.info("strArray：{}",testArray.getStrArray());
+        return map;
     }
 
 

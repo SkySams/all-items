@@ -70,6 +70,7 @@ public class EnumListUtil {
         System.out.println(enumToListMap(EducateStatusEnum.class));
 
 
+
     }
 
 }
