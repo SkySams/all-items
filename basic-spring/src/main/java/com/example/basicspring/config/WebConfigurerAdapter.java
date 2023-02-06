@@ -2,11 +2,13 @@ package com.example.basicspring.config;
 
 
 import com.example.basicspring.interceptor.ApiRepeatInterceptor;
+import com.example.basicspring.interceptor.CORSInterceptor;
 import com.example.basicspring.interceptor.LogInterceptor;
 import com.example.basicspring.interceptor.RequestLimitInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -24,9 +26,12 @@ public class WebConfigurerAdapter implements WebMvcConfigurer {
     private LogInterceptor logInterceptor;
     @Autowired
     private ApiRepeatInterceptor apiRepeatInterceptor;
+    @Autowired
+    private CORSInterceptor corsInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(corsInterceptor);
         registry.addInterceptor(logInterceptor).addPathPatterns("/**");
         registry.addInterceptor(apiRepeatInterceptor).addPathPatterns("/**");
         registry.addInterceptor(requestLimitInterceptor).addPathPatterns("/**")
@@ -37,4 +42,8 @@ public class WebConfigurerAdapter implements WebMvcConfigurer {
 //                .excludePathPatterns("/testxx.html");
     }
 
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    }
 }
