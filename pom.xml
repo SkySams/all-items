@@ -29,6 +29,7 @@
         <module>nacos-java-sdk</module>
         <module>xxl-job-master</module>
         <module>module</module>
+        <module>ruoyi</module>
     </modules>
 
     <properties>
