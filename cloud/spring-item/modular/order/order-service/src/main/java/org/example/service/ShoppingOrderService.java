@@ -8,5 +8,5 @@ public interface ShoppingOrderService {
 
     String add();
 
-    public void createOrder();
+    void createOrder();
 }

@@ -24,6 +24,11 @@ import java.util.stream.Collectors;
  */
 public class Demos {
 
+    @Test
+    public void he(){
+        new String ("{}");
+    }
+
     /**
      * @Title: unicodeEncode
      * @Description: unicode编码 将中文字符转换成Unicode字符

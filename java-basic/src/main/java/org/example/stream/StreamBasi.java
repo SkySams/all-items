@@ -14,11 +14,22 @@ import java.util.stream.Stream;
  */
 public class StreamBasi {
 
-    List<Room> rooms_one = new ArrayList<>();
-    List<Room> rooms_two = new ArrayList<>();
+    static List<Room> rooms_one = new ArrayList<>();
+    static List<Room> rooms_two = new ArrayList<>();
 
-    List<Integer> one = new ArrayList<>();
-    List<Integer> two = new ArrayList<>();
+    static List<Integer> one = new ArrayList<>();
+    static List<Integer> two = new ArrayList<>();
+    static {
+        init();
+    }
+
+    @Test
+    public void sm(){
+        Map<Integer,Integer> map = new HashMap<>();
+        map.put(1,23);
+        map.put(3,23);
+        System.out.println(map);
+    }
 
     @Test
     public void stream_reduce(){
@@ -116,7 +127,6 @@ public class StreamBasi {
 
     @Test
     public void stream_collect(){
-        this.init();
         System.out.println(Stream.of("A","C","D").collect(Collectors.joining(",")));
         System.out.println(Stream.of("A","C","D").collect(Collectors.toList()));
         System.out.println(Stream.of("A","C","D").collect(Collectors.toSet()));
@@ -136,7 +146,6 @@ public class StreamBasi {
 
     @Test
     public void concat (){
-        this.init();
         //方法1
         List<Integer> result = Stream.of(rooms_one, rooms_two).flatMap(List::stream).map(Room::getId).collect(Collectors.toList());
         System.out.println(result);
@@ -155,7 +164,7 @@ public class StreamBasi {
 
     }
 
-    public void init(){
+    public static void init(){
         Room roomA=new Room();
         roomA.setId(1);
         roomA.setName("1-A");
