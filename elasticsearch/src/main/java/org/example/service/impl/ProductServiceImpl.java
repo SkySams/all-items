@@ -35,7 +35,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductDao, Product> impleme
 
     @Override
     public PageDTO<ProductDto> pageDto(int current, int size) {
-       Page<ProductDto> page = Page.of(current,size);
+        Page<ProductDto> page = Page.of(current,size);
         return new PageDTO<>();
     }
 }

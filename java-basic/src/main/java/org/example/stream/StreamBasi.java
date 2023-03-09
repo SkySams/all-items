@@ -122,7 +122,6 @@ public class StreamBasi {
 
     @Test
     public void stream_count(){
-        System.out.println(Stream.of(1,2,3).count());
     }
 
     @Test

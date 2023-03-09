@@ -30,11 +30,11 @@ public class ConsumerApplication {
 
         ConfigurableApplicationContext context = SpringApplication.run(ConsumerApplication.class, args);
         ConsumerApplication application = context.getBean(ConsumerApplication.class);
-        String result = application.doSayHello("world");
-        System.out.println("result: " + result);
-
-        String result1 = application.doSayHello("world1");
-        System.out.println("result: " + result1);
+//        String result = application.doSayHello("world");
+//        System.out.println("result: " + result);
+//
+//        String result1 = application.doSayHello("world1");
+//        System.out.println("result: " + result1);
     }
 
     public String doSayHello(String name) {

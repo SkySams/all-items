@@ -19,3 +19,6 @@ spring:
         username: ${spring.cloud.nacos.discovery.username}
         password: ${spring.cloud.nacos.discovery.password}
         timeout: 3000
+
+  main:
+    web-application-type: reactive

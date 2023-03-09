@@ -12,6 +12,8 @@ public class EnumTest {
     @Test
     public void one(){
         System.out.println(School.KO.name());
+        System.out.println(School.NU.equals("NU"));
+        System.out.println(School.valueOf(School.class,"KO"));
     }
 
 }
