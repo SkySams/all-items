@@ -26,7 +26,7 @@ public class BusinessServiceImpl implements BusinessService {
     @GlobalTransactional(timeoutMills = 300000, name = "dubbo-demo-tx")
     public void purchase(String userId, String commodityCode, int orderCount) {
         LOGGER.info("purchase begin ... xid: " + RootContext.getXID());
-        //stockService.deduct(commodityCode, orderCount);
+        stockService.deduct(commodityCode, orderCount);
         // just test batch update
         // stockService.batchDeduct(commodityCode, orderCount);
         orderService.create(userId, commodityCode, orderCount);
