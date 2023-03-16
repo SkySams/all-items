@@ -87,11 +87,11 @@ public class Demos {
     }
 
     public static void main(String[] args) {
-        s();
+//        s();
 
 //        test(); [{0}]
-        System.out.println(unicodeDecode("\\u6D3B\\u52A8\\u65F6\\u95F4\\u91CD\\u590D"));
-        System.out.println(unicodeEncode(""));
+        System.out.println(unicodeDecode("\\u6570\\u636E\\u957F\\u5EA6\\u4E0D\\u80FD\\u4E3A\\u7A7A"));
+        System.out.println(unicodeEncode("数据异常"));
 
         LocalDateTime localDateTime = LocalDateTimeUtil.of(new Date());
 //        LocalDateTime offset = LocalDateTimeUtil.offset(localDateTime, 30, ChronoUnit.MINUTES);
