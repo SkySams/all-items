@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  nacos:
+    image: nacos/nacos-server:v2.2.0
+    container_name: nacos
+    volumes:
+      - ./nacos/standalone-logs:/home/nacos/logs
+      - ./nacos/plugins:/home/nacos/plugins
+      - ./nacos/conf:/home/nacos/conf
+      - ./nacos/data:/home/nacos/data
+    ports:
+      - "80:8848"
+
+  seata-server:
+    image: seataio/seata-server:1.6.1
+    hostname: seata-server
+    ports:
+      - "8091:8091"
+    environment:
+      - SEATA_PORT=8091
+      - STORE_MODE=file
