@@ -52,17 +52,17 @@ public class TestNacosClient {
 //            configService.removeListener(dataId,group,nacosListener);
 
 
-            /**
-             * 发布配置
-             */
-            boolean isPublishOk = configService.publishConfig(dataId, group, "content");
-            System.out.println(isPublishOk);
-
-            /**
-             * 删除配置
-             */
-            boolean isRemoveOk = configService.removeConfig(dataId,group);
-            System.out.println(isRemoveOk);
+//            /**
+//             * 发布配置
+//             */
+//            boolean isPublishOk = configService.publishConfig(dataId, group, "content");
+//            System.out.println(isPublishOk);
+//
+//            /**
+//             * 删除配置
+//             */
+//            boolean isRemoveOk = configService.removeConfig(dataId,group);
+//            System.out.println(isRemoveOk);
 
             while (true) {
                 try {

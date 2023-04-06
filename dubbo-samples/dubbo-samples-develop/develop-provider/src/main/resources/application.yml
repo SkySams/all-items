@@ -1,0 +1,21 @@
+server:
+  port: 9000
+
+dubbo:
+  application:
+    name: provider
+  registry:
+    address: nacos://127.0.0.1:8848?username=nacos&password=nacos
+  protocol:
+    name: dubbo
+    port: -1
+
+
+nacos:
+  config:
+    server-addr: 192.168.0.128:8848
+  discovery:
+    server-addr: 192.168.0.128:8848
+    username: nacos
+    password: nacos
+

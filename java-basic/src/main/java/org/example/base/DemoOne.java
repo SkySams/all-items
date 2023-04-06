@@ -1,5 +1,6 @@
 package org.example.base;
 
+import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * @author: zyh
+ * @author: zyh 练习
  * @date: 2022/10/10
  */
 public class DemoOne {
@@ -18,19 +19,21 @@ public class DemoOne {
 
     @Test
     public void strng(){
+
+        System.out.println(NumberUtil.isDouble("5.22"));
 //        StringBuilder type = new StringBuilder();
 //        System.out.println(StrUtil.isBlank(type.toString()));
 
 //        System.out.println(Runtime.getRuntime().availableProcessors());
 
-        List<String> st = Arrays.asList("a","f");
-       Iterator ier = st.iterator();
-       if (ier.hasNext()){
-           System.out.println(ier.next());
-           while (ier.hasNext()){
-               System.out.println(ier.next());
-           }
-       }
+//        List<String> st = Arrays.asList("a","f");
+//       Iterator ier = st.iterator();
+//       if (ier.hasNext()){
+//           System.out.println(ier.next());
+//           while (ier.hasNext()){
+//               System.out.println(ier.next());
+//           }
+//       }
 
     }
 
